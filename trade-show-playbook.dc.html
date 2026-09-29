@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F3EFE6; color: #21221F; font-family: 'Montserrat', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  * { box-sizing: border-box; }
+  a { color: #6B2F2B; text-decoration: underline; text-decoration-color: #6B2F2B; text-decoration-thickness: 1px; text-underline-offset: 4px; transition: text-decoration-thickness 160ms ease-out; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid #6B2F2B; outline-offset: 3px; }
+  input, textarea, button { font-family: inherit; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="position:relative;overflow-x:hidden;background:#F3EFE6">
+
+  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:50;height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(24px,6vw,88px);transition:height 300ms ease-out,background 300ms ease-out">
+    <a href="index.dc.html" aria-label="Define Co. home" style="display:flex;align-items:center;text-decoration:none">
+      <img data-logo="" src="assets/logo-cream-sm.png" alt="Define Co." style="display: block; height: 69px; width: auto; transition: height 300ms ease-out">
+    </a>
+    <sc-if value="{{ navWide }}" hint-placeholder-val="{{ true }}">
+      <nav data-nav="" style="display:flex;align-items:center;gap:36px">
+        <a href="index.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Home</a>
+        <a href="index.dc.html#work" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Services</a>
+        <a href="index.dc.html#training" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Training</a>
+        <a href="about.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none;border-bottom:1px solid #C9C0B2;padding-bottom:3px">Resources</a>
+        <a href="index.dc.html#faq" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">FAQ</a>
+        <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration:none">864-270-1790</a>
+        <a href="#close" style="background:#6B2F2B;color:#F3EFE6;border-radius:2px;padding:15px 28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#21221F">Let's talk</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ navNarrow }}" hint-placeholder-val="{{ false }}">
+      <button data-burger="" onClick="{{ toggleNav }}" aria-label="Open menu" style="background:none;border:none;padding:12px;display:flex;flex-direction:column;gap:6px;cursor:pointer">
+        <span style="display:block;width:26px;height:1px;background:#F3EFE6"></span>
+        <span style="display:block;width:26px;height:1px;background:#F3EFE6"></span>
+      </button>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,6vw,64px)">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:24px;width:auto">
+        <button onClick="{{ toggleNav }}" aria-label="Close menu" style="background:none;border:none;color:#F3EFE6;font:400 2rem/1 'Playfair Display',serif;cursor:pointer;padding:8px 12px">×</button>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:20px">
+        <a href="index.dc.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Home</a>
+        <a href="index.dc.html#work" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Services</a>
+        <a href="index.dc.html#training" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Training</a>
+        <a href="about.dc.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.dc.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Resources</a>
+        <a href="index.dc.html#faq" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">FAQ</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration:none">864-270-1790</a>
+        <a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.7);text-decoration:none">emily@defineco.studio</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <section id="top" data-screen-label="01 Article Hero" style="background:#354C41;padding:clamp(150px,16vw,200px) clamp(24px,6vw,88px) clamp(64px,8vw,96px)">
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+      <a data-hero="0" href="resources.dc.html" style="align-self:flex-start;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#C9C0B2;text-decoration:none">← Resources · Trade Show Strategy</a>
+      <h1 data-hero="120" style="margin:0;font:400 clamp(2.75rem,6vw,5rem)/1.02 'Playfair Display',serif;letter-spacing:-0.02em;color:#F3EFE6"><span style="display:block">The Non-Negotiable</span><span style="display:block;font-style:italic;color:#C9C0B2">Trade Show Playbook</span></h1>
+      <p data-hero="260" style="margin:0;font:400 clamp(1.125rem,1.6vw,1.375rem)/1.6 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:46ch">Hope is not a strategy. Dive into this simple four-part plan for before, during, and after the show, plus a checklist to put in your bag.</p>
+      
+    </div>
+  </section>
+
+  
+
+  <section id="article" data-screen-label="02 Article" style="background:#F3EFE6;padding:clamp(56px,7vw,96px) clamp(24px,6vw,88px) clamp(88px,11vw,144px)">
+    <div style="max-width:980px;margin:0 auto clamp(48px,6vw,72px);aspect-ratio:21/9;background:#EDE7DA;border-radius:2px;overflow:hidden">
+      <image-slot id="playbook-hero" shape="rect" placeholder="Article header image, wide, trade show floor"></image-slot>
+    </div>
+    <article style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:22px">
+        <p style="margin:0;font:400 clamp(1.25rem,1.9vw,1.5rem)/1.55 'Montserrat',sans-serif;color:#21221F">Let's talk about the tablecloth.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">You signed up for the show. You wrote the check. You ordered the branded tablecloth, the pop up banners, some pens, maybe a little extra swag. You packed the team into logoed polos and told everyone to show up for setup at 8am. Show opens at 9. And now John from the team is standing behind a table for three days straight, hoping someone wants to come shake his hand.</p>
+        <div style="margin:clamp(16px,2vw,24px) 0;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font:600 0.6875rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">The hard truth</p>
+          <p style="margin:0;font:italic 400 clamp(1.875rem,3.2vw,2.5rem)/1.12 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">This is not a game plan. This is hope. And hope is not a strategy.</p>
+        </div>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">I've watched it happen more times than I can count. And I get it. Showing up feels like doing something. But showing up without a plan is one of the most expensive things a business can do.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Let me put it in perspective. You spent thousands for floor space. A few hundred on branding. Another few hundred on swag. Add travel, hotels, and food per diem and you are spending serious money to stand behind a tablecloth and wait.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">And then the trade show vultures show up. You know exactly who I'm talking about. They walk by your booth pretending to be on the phone. They make eye contact, or maybe they don't. They swipe the pen off your table without breaking stride and disappear into the crowd. That pen Lucy bought in HR? Two dollars and fifty cents. Gone. No handshake. No conversation. No return.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Now multiply that by every pen on the table.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">This guide exists because there is a better way. And it starts long before you ever set foot on that show floor.</p>
+        <div style="margin-top:clamp(40px,5vw,64px);padding-top:clamp(32px,4vw,48px);border-top:1px solid #C9C0B2;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Part 1</p>
+          <h2 style="margin:0;font:400 clamp(2rem,3.6vw,2.75rem)/1.1 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Before You Even Sign the Check</h2>
+        </div>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Here's the question nobody asks before they register.</p>
+        <div style="margin:clamp(16px,2vw,24px) 0;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font:600 0.6875rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Ask this first</p>
+          <p style="margin:0;font:italic 400 clamp(1.875rem,3.2vw,2.5rem)/1.12 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Are my ideal clients actually going to be there, or do I just feel like I need to be?</p>
+        </div>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Showing up because it's expected is a double edged sword. In some industries, if you're not at the show, people assume you went out of business. I get it. There are shows you simply cannot miss. But there are also shows you have no business spending money on.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Before you write that check, do your homework. Find out who actually attends. If you're not sure, don't booth. Buy a ticket, walk the floor yourself, and find out firsthand whether your ideal client is even in the building. It will cost you a fraction of the price and save you from a very expensive mistake.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Once you've identified the shows you absolutely have to be at, now the real planning begins. Ask yourself these questions before you do anything else:</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">Who is my ideal person at this show?</strong> A buyer? An operator? A decision maker or an influencer?</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">What are they there to do?</strong> Are they there to learn? To buy? To shop around? Understanding their mindset changes everything about how you show up.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">What specifically do they care about?</strong> Is it one product, one service, one problem you solve, or the full picture of what you offer? Hone it down. You cannot be everything to everyone on a trade show floor.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">What does success look like when I leave?</strong> Define it before you go. More leads? Specific conversations? A certain number of appointments booked? If you can't measure it you can't call it a win.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">The show hasn't started yet and you already have more of a game plan than most of the exhibitors on that floor. That's exactly where we want you.</p>
+        <div style="margin-top:clamp(40px,5vw,64px);padding-top:clamp(32px,4vw,48px);border-top:1px solid #C9C0B2;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Part 2</p>
+          <h2 style="margin:0;font:400 clamp(2rem,3.6vw,2.75rem)/1.1 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Pre-Show Engagement</h2>
+        </div>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">You've confirmed the show is worth it. You know who's going to be there and what they care about. Now here's where most companies drop the ball. They wait until they're on the show floor to make their first impression. By then it's too late. You're one of a hundred booths and nobody knows you're coming.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Pre-show engagement is not optional. It is step one. And you cannot skip it. Here's what that actually looks like:</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">Your email list.</strong> If you have one, use it. Send a series of touches leading up to the show. Let people know you'll be there, what you're doing, and why they should come find you specifically.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">Direct mail.</strong> I know it sounds old school. It works. But let's be clear, this isn't a blanket strategy for every show or every business. Direct mail makes sense when the value of what you're selling justifies the investment. If you're selling a high ticket product or service, a physical piece in someone's hand can do things an email never will. And we're not talking postcards. We're talking something thoughtful. Something that makes someone stop, look at it, and actually remember you when they walk onto that show floor.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">Social media.</strong> Yes, post that you're going to be at booth 542. But let's be honest. If social media is your entire pre-show strategy, you're not ready for the show. It supports everything else you're doing. It does not replace it. Not even close.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">Personal outreach.</strong> This is where business actually lives and dies. And it's the one most people skip because it takes real effort. You cannot automate your way through this one. If you do, you sound like a chatbot stuck in an endless loop, and nobody is seeking you out on that show floor because of a sequence you built in five minutes. Pick up the phone. Draft a real email. Seek out the specific people you want to connect with and make it feel like you wrote it for them. Because you did. We're not talking about blasting a crowd of 1,500. We're talking about a very targeted list of individuals who are worth your time and attention.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">The goal of all of this is simple. By the time that show floor opens you want your name, your logo, your face to trigger something in people's brains. A flicker of recognition. An "oh I've seen them, I should go check out what they're doing." That flicker is worth more than any pen you'll ever put on a table.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">And here's the thing. This is all doable. It just takes a little pre-planning. You don't have to feel like you just added 16 things to your to-do list. That's exactly what a strategy is for. When it's built right, this feels seamless. Not overwhelming. Just intentional.</p>
+        <div style="margin-top:clamp(40px,5vw,64px);padding-top:clamp(32px,4vw,48px);border-top:1px solid #C9C0B2;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Part 3</p>
+          <h2 style="margin:0;font:400 clamp(2rem,3.6vw,2.75rem)/1.1 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">During the Show</h2>
+        </div>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">You did the work. You planned ahead, you reached out, you built the anticipation. Now the doors are open and it's game time.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Here's the hard truth. You can do everything right in pre-show and still blow it on the floor. Because showing up is not the same as standing out.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Let's talk about swag for a second. Put down the ink pens. Put down the notebooks. Put down the tumblers. If you've seen it at half the other booths before you even finished walking the floor, take it off your list. Nobody remembers the pen. Nobody goes home and tells their colleague about the notebook. Generic swag is just expensive clutter that ends up in a hotel trash can by Thursday night.</p>
+        <div style="margin:clamp(16px,2vw,24px) 0;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font:600 0.6875rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">The rule</p>
+          <p style="margin:0;font:italic 400 clamp(1.875rem,3.2vw,2.5rem)/1.12 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Be different. Be memorable. Be a little crazy if you have to.</p>
+        </div>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">I once pitched gold living statues to an executive at Stevens. I got the eye roll. I got the look of doubt. Show floor opened, that statue started moving through the crowd, and our booth became the busiest one on the floor. The look of doubt turned into a smile and a nod. You don't have to follow the formula. Sometimes the idea that makes everyone a little nervous is exactly the right one.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Another time we put out promotional items that made the whole team cringe a little before the show opened. Funny undergarments. Yes, really. People were laughing. People were dragging their friends over just to see them. The buzz lasted long after the show floor closed, and that's exactly the point. You want people talking. You want them pulling someone else by the arm and saying "you have to go see this booth." That kind of word of mouth doesn't happen with a tumbler.</p>
+        <h3 style="margin:16px 0 0;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Now let's talk about your team.</h3>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">A team on their phones gets zero engagement. Zero. If someone walks by your booth and your people are staring at a screen, that person keeps walking. Every single time. Coach your team before the show. Set the expectation. Phones away, eyes up, be present.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">But here's what a lot of companies miss even when they're doing everything else right. You can have the best booth on the floor, the most engaging team, the most memorable giveaway, and still walk away with nothing if you're not capturing information.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Great conversations are not leads. A great conversation with no follow-up mechanism is just a nice memory.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Have a system. Know how you're collecting contact information before you ever set foot on that floor. Badge scanner, simple sign-up, QR code, whatever it is, decide in advance and make sure your team knows how to use it. Every person who stops, engages, and shows genuine interest should leave a trail. Because Part 4 depends on it.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">And if you want to take it a step further, think about your giveaway strategically. Not just what you're handing out on the floor, but what you sent ahead of time. A two-part approach works: a mailed item that arrives before the show and creates anticipation, paired with an RSVP that gives you a committed list of people who are already planning to find you. Now you're not hoping someone walks by. You're welcoming people who already said they'd show up.</p>
+        <div style="margin:clamp(16px,2vw,24px) 0;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font:600 0.6875rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">The difference</p>
+          <p style="margin:0;font:italic 400 clamp(1.875rem,3.2vw,2.5rem)/1.12 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">That's the difference between a booth and a destination.</p>
+        </div>
+        <div style="margin-top:clamp(40px,5vw,64px);padding-top:clamp(32px,4vw,48px);border-top:1px solid #C9C0B2;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Part 4</p>
+          <h2 style="margin:0;font:400 clamp(2rem,3.6vw,2.75rem)/1.1 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Post-Show Follow Up</h2>
+        </div>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">This is where the money is. And this is where most companies leave it on the table.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">You just spent three days on your feet, shaking hands, having conversations, telling your story over and over again. You're exhausted. Your team is exhausted. You get home, you unpack your bag, and those leads, the ones you worked so hard for, start to blur together. Names become faces you can't quite place. Conversations you swore you'd remember are already fading.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">This is exactly why your follow-up system has to be built before you ever leave for the show. Not on the plane home. Not the Monday after. Before you go.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Decide in advance how you're following up, with who, and on what timeline. Segment your contacts while the show is still fresh. Hot leads, warm conversations, people worth nurturing over time. If you wait until you're back at your desk staring at a stack of business cards and a badge scan export, you've already lost the window.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Here's what a real follow-up sequence looks like:</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">Within 24 to 48 hours.</strong> A personal note. Not a blast. Not a template with their first name swapped in. A real message that references something specific from your conversation. This is where the notes you took on the floor pay off. If you didn't take notes, start doing that now.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">Within the first week.</strong> A follow-up with something of value. An article, a resource, an answer to a question they asked. Something that says I was actually listening when we talked.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)"><strong style="font-weight:600;color:#21221F">The longer nurture.</strong> Not every lead is ready to buy on Monday. Some of the best relationships take months to develop. Have a plan for staying in their world without being the person who emails them every two weeks asking if they're ready yet.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">The follow-up is not a chore. It's the whole point. The show floor was just the introduction.</p>
+        <div style="margin-top:clamp(40px,5vw,64px);background:#FFFFFF;border:1px solid rgba(201,192,178,0.55);border-top:3px solid #6B2F2B;border-radius:2px;box-shadow:0 1px 2px rgba(33,34,31,0.04),0 8px 24px -12px rgba(33,34,31,0.16);padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Your pre-show checklist</p>
+            <h2 style="margin:0;font:400 clamp(1.75rem,3vw,2.25rem)/1.1 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Print this. Put it in your bag. <em style="font-style:italic;color:#6B2F2B">Use it.</em></h2>
+          </div>
+          <p style="margin:8px 0 0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Before you leave</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px">
+            <li style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:16px;align-items:start">
+              <span aria-hidden="true" style="width:18px;height:18px;margin-top:4px;border:1.5px solid #6B2F2B;border-radius:2px"></span>
+              <span style="font:400 1rem/1.65 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)"><strong style="font-weight:600;color:#21221F">Identify your key players.</strong> Who do you know is attending? Who do you hope will be there? Make a list. These are not strangers. These are people worth your personal attention.</span>
+            </li>
+            <li style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:16px;align-items:start">
+              <span aria-hidden="true" style="width:18px;height:18px;margin-top:4px;border:1.5px solid #6B2F2B;border-radius:2px"></span>
+              <span style="font:400 1rem/1.65 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)"><strong style="font-weight:600;color:#21221F">Reach out personally.</strong> A real message. No automation. No copy-paste. Write it like you mean it because you do.</span>
+            </li>
+            <li style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:16px;align-items:start">
+              <span aria-hidden="true" style="width:18px;height:18px;margin-top:4px;border:1.5px solid #6B2F2B;border-radius:2px"></span>
+              <span style="font:400 1rem/1.65 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)"><strong style="font-weight:600;color:#21221F">Define what success looks like.</strong> Not a full booth. Not a good vibe. A specific number. X real conversations. X leads captured. Know it before you go.</span>
+            </li>
+            <li style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:16px;align-items:start">
+              <span aria-hidden="true" style="width:18px;height:18px;margin-top:4px;border:1.5px solid #6B2F2B;border-radius:2px"></span>
+              <span style="font:400 1rem/1.65 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)"><strong style="font-weight:600;color:#21221F">Build your follow-up sequence.</strong> Have it ready before you pack your bag. Not on the plane. Not Monday morning. Before you leave.</span>
+            </li>
+            <li style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:16px;align-items:start">
+              <span aria-hidden="true" style="width:18px;height:18px;margin-top:4px;border:1.5px solid #6B2F2B;border-radius:2px"></span>
+              <span style="font:400 1rem/1.65 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)"><strong style="font-weight:600;color:#21221F">Brief your team.</strong> Roles assigned. Talking points clear. Phones away, eyes up. Everyone knows the one thing you're there to say.</span>
+            </li>
+            <li style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:16px;align-items:start">
+              <span aria-hidden="true" style="width:18px;height:18px;margin-top:4px;border:1.5px solid #6B2F2B;border-radius:2px"></span>
+              <span style="font:400 1rem/1.65 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)"><strong style="font-weight:600;color:#21221F">Confirm your lead capture method.</strong> Tested and ready. No surprises on the floor.</span>
+            </li>
+          </ul>
+          <p style="margin:8px 0 0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Day of</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px">
+            <li style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:16px;align-items:start">
+              <span aria-hidden="true" style="width:18px;height:18px;margin-top:4px;border:1.5px solid #6B2F2B;border-radius:2px"></span>
+              <span style="font:400 1rem/1.65 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)"><strong style="font-weight:600;color:#21221F">Set up your booth and take a photo.</strong> Save it as your reference for what everything should look like at future shows. Next year's setup just got a whole lot easier.</span>
+            </li>
+            <li style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:16px;align-items:start">
+              <span aria-hidden="true" style="width:18px;height:18px;margin-top:4px;border:1.5px solid #6B2F2B;border-radius:2px"></span>
+              <span style="font:400 1rem/1.65 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)"><strong style="font-weight:600;color:#21221F">Check your giveaway strategy.</strong> Not just something to grab. What do they give you to get what you have? Make it an exchange worth making.</span>
+            </li>
+            <li style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:16px;align-items:start">
+              <span aria-hidden="true" style="width:18px;height:18px;margin-top:4px;border:1.5px solid #6B2F2B;border-radius:2px"></span>
+              <span style="font:400 1rem/1.65 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)"><strong style="font-weight:600;color:#21221F">Revisit your goal before the doors open.</strong> Say it out loud if you have to. Keep it front of mind all day.</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div style="margin:clamp(16px,2vw,24px) 0;display:flex;flex-direction:column;gap:12px">
+          
+          
+        </div>
+        
+        <div style="margin-top:clamp(40px,5vw,64px);padding-top:clamp(32px,4vw,48px);border-top:1px solid #C9C0B2;display:flex;flex-direction:column;gap:12px">
+          
+          
+        </div><p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Closing</p><p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Everything in this playbook comes down to one thing. Intention. Knowing why you're there, who you're there for, and what happens after the carpet gets rolled up. The companies that win on the show floor aren't always the ones with the biggest booth. They're the ones who did the work before they got there.</p><p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">You can't control what breaks on the show floor. You can only control what you defined before you walked in.</p>
+        <p style="margin:0;font:italic 400 clamp(1.5rem,2.4vw,1.875rem)/1.2 'Playfair Display',serif;color:#6B2F2B">So go define it.</p>
+        <div style="margin-top:clamp(32px,4vw,48px);padding-top:32px;border-top:1px solid #C9C0B2;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font:400 1.5rem/1.2 'Playfair Display',serif;color:#21221F">Emily Hamilton</span>
+            <span style="font:500 0.8125rem/1.5 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(33,34,31,0.7)">Define Co. · Building Aviation Marketing Teams</span>
+          </div>
+          <a href="#close" style="display:inline-block;background:#6B2F2B;color:#F3EFE6;border-radius:2px;padding:18px 32px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#21221F">Get a second set of eyes</a>
+        </div>
+    </article>
+  </section><section id="close" data-rail="10 &nbsp;Close" data-screen-label="10 Close" style="background:#6B2F2B;padding:180px clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto;text-align:center">
+      <h2 data-reveal="" style="margin:0 auto 24px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;max-width:22ch">Tell me what's going on.</h2>
+      <p data-reveal="" style="margin:0 auto 56px;font:400 clamp(1.1875rem,1.6vw,1.4375rem)/1.55 'Montserrat',sans-serif;color:#F3EFE6;max-width:46ch">No pitch deck, no discovery fee. You tell me what isn't landing and I tell you straight whether I'm the right person for it.</p>
+      <form data-reveal="" data-reveal-delay="90" onSubmit="{{ onSubmit }}" style="max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:16px;text-align:left">
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Name</span>
+          <input type="text" name="name" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Company</span>
+          <input type="text" name="company" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Email</span>
+          <input type="email" name="email" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">What's going on?</span>
+          <textarea name="message" rows="5" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.6 'Montserrat',sans-serif;resize:vertical;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none"></textarea>
+        </label>
+        <button type="submit" style="margin-top:12px;align-self:flex-start;background:#F3EFE6;color:#6B2F2B;border:none;border-radius:2px;padding:19px 36px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 180ms ease-out" style-hover="background:#C9C0B2">Send it</button>
+        <p style="margin:16px 0 0;font:500 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.7)">Or just call. <a href="tel:8642701790" style="color:#F3EFE6;text-decoration-color:#F3EFE6">864-270-1790</a></p>
+      </form>
+    </div>
+  </section>
+
+  <footer style="background:#21221F;padding:64px clamp(24px,6vw,88px)">
+    
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display: block; align-self: flex-start; height: 76px; width: 345px; margin-bottom: 8px">
+        <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6">Emily Hamilton<span style="font-weight:400;color:rgba(243,239,230,0.6)"> · Founder, Define Co.</span></span>
+        <a href="tel:8642701790" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">864-270-1790</a>
+        <a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">emily@defineco.studio</a>
+      </div>
+      <div aria-label="Services" style="display:flex;flex-direction:column;gap:10px">
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Brand and Messaging</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Social Strategy and Growth</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Trade Show Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Website Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Print and Digital Ad Strategy</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+          <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
+            <a href="https://nbaa.org/" target="_blank" rel="noopener noreferrer" aria-label="NBAA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/nbaa-member-sm.png" alt="Member of NBAA" style="display:block;height:34px;width:auto"></a>
+          </span>
+          <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
+            <a href="https://glada.aero/" target="_blank" rel="noopener noreferrer" aria-label="GLADA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/glada-member-sm.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:36px;width:auto"></a>
+          </span>
+        </div>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.6)">© 2026 Define Co. Greenville, South Carolina.</span>
+      </div>
+    </div></footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page behavior&quot;}}">
+class Component extends DCLogic {
+  state = { wide: 1440, navOpen: false };
+
+  componentDidMount() {
+    this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._onResize = () => this.setState({ wide: window.innerWidth });
+    window.addEventListener('resize', this._onResize);
+    this._onResize();
+
+    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+    if (!this._reduced) {
+      document.querySelectorAll('[data-hero]').forEach(el => {
+        const d = parseInt(el.getAttribute('data-hero'), 10) || 0;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = 'opacity 720ms ' + ease + ', transform 720ms ' + ease;
+        setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, d + 60);
+      });
+      const items = [];
+      const prep = (el, rise, dur, delay) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(' + rise + 'px)';
+        el.style.transition = 'opacity ' + dur + 'ms ' + ease + ', transform ' + dur + 'ms ' + ease;
+        el.style.transitionDelay = delay + 'ms';
+        items.push(el);
+      };
+      document.querySelectorAll('[data-reveal]').forEach(el => prep(el, 28, 720, parseInt(el.getAttribute('data-reveal-delay'), 10) || 0));
+      document.querySelectorAll('[data-reveal-portrait]').forEach(el => prep(el, 0, 900, 0));
+      this._io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            this._io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.01, rootMargin: '0px 0px -12% 0px' });
+      items.forEach(el => this._io.observe(el));
+    }
+
+    this._onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      const on = y > 120;
+      const header = document.querySelector('[data-header]');
+      if (header) {
+        header.style.height = on ? '84px' : '96px';
+        const lg = document.querySelector('[data-logo]'); if (lg) lg.style.height = on ? '56px' : '69px';
+        header.style.background = on ? 'rgba(243,239,230,0.94)' : 'transparent';
+        header.style.backdropFilter = on ? 'blur(8px)' : 'none';
+        header.style.borderBottom = on ? '1px solid #C9C0B2' : '1px solid transparent';
+      }
+      const logo = document.querySelector('[data-logo]');
+      if (logo) logo.src = on ? 'assets/logo-ink-sm.png' : 'assets/logo-cream-sm.png';
+      const ink = on ? '#21221F' : '#F3EFE6';
+      const nav = document.querySelector('[data-nav]');
+      if (nav) Array.from(nav.children).forEach(a => {
+        if (a.style.background === '' || a.style.background === 'transparent') a.style.color = ink;
+        if (a.style.borderBottom) a.style.borderBottomColor = on ? '#6B2F2B' : '#C9C0B2';
+      });
+      const burger = document.querySelector('[data-burger]');
+      if (burger) Array.from(burger.children).forEach(s => { s.style.background = ink; });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+
+  renderVals() {
+    const w = this.state.wide;
+    return {
+      onSubmit: e => { e.preventDefault(); },
+      storyWide: w >= 720,
+      storyNarrow: w < 720,
+      navWide: w >= 1080,
+      navNarrow: w < 1080,
+      navOpen: this.state.navOpen,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

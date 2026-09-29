@@ -1,28 +1,28 @@
 # Define Co. — defineco.studio
 
-Design source for the Define Co. website. These pages are working HTML prototypes, and they're the reference the live Wix site is built from.
+Design source for the Define Co. website: working HTML prototypes the live Wix site is built from.
 
 ## Pages
-- `index.dc.html`: Homepage (10 sections: Hero, The Process, Who This Is For, Proof, The Work, Team Training, My Story, Point of View, FAQ, Contact)
-- `about.dc.html`: About / My Story
-- `training.dc.html`: Inquire About Training (form)
+- `index.dc.html` — Homepage
+- `about.dc.html` — About / My Story
+- `training.dc.html` — Inquire About Training (form)
+- `resources.dc.html` — Resources library (never gated)
+- `trade-show-playbook.dc.html` — The Non-Negotiable Trade Show Playbook
+- `marketers-audit.dc.html` — The Overwhelmed Marketer's Audit (interactive, scores live)
 
-Open any page in a browser to view it. `support.js` must sit beside the pages. `image-slot.js` powers the image placeholders that still need photos.
+`support.js` and `image-slot.js` must sit beside the pages.
 
-## Assets
-`assets/` holds only the files the pages use: logos (cream and ink versions), the NBAA and GLADA member marks, and section photography.
+## Speed
+- Every image is resized to its display size and compressed. 18 images, 1557KB total across all six pages.
+- Below-the-fold images use `loading="lazy"` and `decoding="async"`. The hero images and logos load right away.
+- Fonts come from Google Fonts with preconnect and `display=swap`, so text shows immediately.
+- When rebuilding in Wix, upload these exact files from `assets/`. Wix will also serve them as WebP automatically.
 
 ## Design tokens
-- Ivory `#F3EFE6`: page ground
-- Taupe `#C9C0B2`: Proof band, rules
-- Forest `#354C41`: dark sections
-- Ink `#21221F`: text, footer
-- Cordovan `#6B2F2B`: CTAs, eyebrows
-- Type: Playfair Display (headlines), Montserrat (body), from Google Fonts
-- Radius: 2px
+Ivory #F3EFE6 · Taupe #C9C0B2 · Forest #354C41 · Ink #21221F · Cordovan #6B2F2B · Playfair Display (headlines) + Montserrat (body) · 2px radius
 
 ## Still open
-- Photo slots not yet filled: homepage hero, Section 07 portrait, Section 08 "More content isn't the answer", About page story photo
-- LinkedIn URL on the About page is a placeholder
-- The GLADA logo still includes its small tagline, and a vector version hasn't been requested from GLADA yet
-- The `/services/*` links in the footer and service cards point to pages that don't exist yet
+- All contact and training forms need to be connected to an inbox. They don't submit yet.
+- Resource card images for the Playbook and the Audit, and the Playbook header image, are empty placeholder slots.
+- Service detail pages don't exist yet, so the service cards and footer items are intentionally unlinked.
+- The GLADA logo still includes its small tagline. Ask GLADA for vector artwork.

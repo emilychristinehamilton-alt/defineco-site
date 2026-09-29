@@ -27,9 +27,9 @@
 
 <div style="position:relative;overflow-x:hidden;background:#354C41">
 
-  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:50;height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(24px,6vw,88px);transition:height 300ms ease-out,background 300ms ease-out">
+  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:50;height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(24px,6vw,88px);transition:height 300ms ease-out,background 300ms ease-out">
     <a href="index.dc.html" aria-label="Define Co. home" style="display:flex;align-items:center;text-decoration:none">
-      <img data-logo="" src="assets/logo-cream.png" alt="Define Co." style="display:block;height:33px;width:auto">
+      <img data-logo="" src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:33px;width:auto">
     </a>
     <sc-if value="{{ navWide }}" hint-placeholder-val="{{ true }}">
       <nav data-nav="" style="display:flex;align-items:center;gap:36px">
@@ -37,6 +37,7 @@
         <a href="index.dc.html#work" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Services</a>
         <a href="index.dc.html#training" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none;border-bottom:1px solid #C9C0B2;padding-bottom:3px">Training</a>
         <a href="about.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Resources</a>
         <a href="index.dc.html#faq" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">FAQ</a>
         <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration:none">864-270-1790</a>
         <a href="index.dc.html#close" style="background:#6B2F2B;color:#F3EFE6;border-radius:2px;padding:15px 28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#21221F">Let's talk</a>
@@ -53,7 +54,7 @@
   <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,6vw,64px)">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <img src="assets/logo-cream.png" alt="Define Co." style="display:block;height:26px;width:auto">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:26px;width:auto">
         <button onClick="{{ toggleNav }}" aria-label="Close menu" style="background:none;border:none;color:#F3EFE6;font:400 2rem/1 'Playfair Display',serif;cursor:pointer;padding:8px 12px">×</button>
       </div>
       <nav style="display:flex;flex-direction:column;gap:20px">
@@ -61,6 +62,7 @@
         <a href="index.dc.html#work" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Services</a>
         <a href="index.dc.html#training" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Training</a>
         <a href="about.dc.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.dc.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Resources</a>
         <a href="index.dc.html#faq" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">FAQ</a>
       </nav>
       <div style="display:flex;flex-direction:column;gap:8px">
@@ -153,24 +155,25 @@
   <footer style="background:#21221F;padding:64px clamp(24px,6vw,88px)">
     <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start">
       <div style="display:flex;flex-direction:column;gap:12px">
-        <img src="assets/logo-cream.png" alt="Define Co." style="display:block;align-self:flex-start;height:29px;width:auto;margin-bottom:8px">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;align-self:flex-start;height:29px;width:auto;margin-bottom:8px">
+        <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6">Emily Hamilton<span style="font-weight:400;color:rgba(243,239,230,0.6)"> &middot; Founder, Define Co.</span></span>
         <a href="tel:8642701790" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">864-270-1790</a>
         <a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">emily@defineco.studio</a>
       </div>
-      <nav style="display:flex;flex-direction:column;gap:10px">
-        <a href="/services/brand-messaging" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Brand and Messaging</a>
-        <a href="/services/social-strategy" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Social Strategy and Growth</a>
-        <a href="/services/trade-show-strategy" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Trade Show Strategy</a>
-        <a href="/services/website-strategy" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Website Strategy</a>
-        <a href="/services/print-digital-ads" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Print and Digital Ad Strategy</a>
-      </nav>
+      <div aria-label="Services" style="display:flex;flex-direction:column;gap:10px">
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Brand and Messaging</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Social Strategy and Growth</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Trade Show Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Website Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Print and Digital Ad Strategy</span>
+      </div>
       <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
         <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
           <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
-            <img src="assets/nbaa-member.png" alt="Member of NBAA" style="display:block;height:34px;width:auto">
+            <a href="https://nbaa.org/" target="_blank" rel="noopener noreferrer" aria-label="NBAA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/nbaa-member-sm.png" alt="Member of NBAA" style="display:block;height:34px;width:auto"></a>
           </span>
           <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
-            <img src="assets/glada-member.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:36px;width:auto">
+            <a href="https://glada.aero/" target="_blank" rel="noopener noreferrer" aria-label="GLADA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/glada-member-sm.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:36px;width:auto"></a>
           </span>
         </div>
         <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.6)">© 2026 Define Co. Greenville, South Carolina.</span>
@@ -205,7 +208,7 @@ class Component extends DCLogic {
       const on = (window.scrollY || document.documentElement.scrollTop) > 120;
       const header = document.querySelector('[data-header]');
       if (header) {
-        header.style.height = on ? '68px' : '88px';
+        header.style.height = on ? '84px' : '96px';
         header.style.background = on ? 'rgba(33,34,31,0.9)' : 'transparent';
         header.style.backdropFilter = on ? 'blur(8px)' : 'none';
         header.style.borderBottom = on ? '1px solid rgba(201,192,178,0.3)' : '1px solid transparent';

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F3EFE6; color: #21221F; font-family: 'Montserrat', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  * { box-sizing: border-box; }
+  a { color: #6B2F2B; text-decoration: underline; text-decoration-color: #6B2F2B; text-decoration-thickness: 1px; text-underline-offset: 4px; transition: text-decoration-thickness 160ms ease-out; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid #6B2F2B; outline-offset: 3px; }
+  input, textarea, button { font-family: inherit; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="position:relative;overflow-x:hidden;background:#F3EFE6">
+
+  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:50;height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(24px,6vw,88px);transition:height 300ms ease-out,background 300ms ease-out">
+    <a href="index.dc.html" aria-label="Define Co. home" style="display:flex;align-items:center;text-decoration:none">
+      <img data-logo="" src="assets/logo-cream-sm.png" alt="Define Co." style="display: block; height: 69px; width: auto; transition: height 300ms ease-out">
+    </a>
+    <sc-if value="{{ navWide }}" hint-placeholder-val="{{ true }}">
+      <nav data-nav="" style="display:flex;align-items:center;gap:36px">
+        <a href="index.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Home</a>
+        <a href="index.dc.html#work" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Services</a>
+        <a href="index.dc.html#training" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Training</a>
+        <a href="about.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none;border-bottom:1px solid #C9C0B2;padding-bottom:3px">Resources</a>
+        <a href="index.dc.html#faq" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">FAQ</a>
+        <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration:none">864-270-1790</a>
+        <a href="#close" style="background:#6B2F2B;color:#F3EFE6;border-radius:2px;padding:15px 28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#21221F">Let's talk</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ navNarrow }}" hint-placeholder-val="{{ false }}">
+      <button data-burger="" onClick="{{ toggleNav }}" aria-label="Open menu" style="background:none;border:none;padding:12px;display:flex;flex-direction:column;gap:6px;cursor:pointer">
+        <span style="display:block;width:26px;height:1px;background:#F3EFE6"></span>
+        <span style="display:block;width:26px;height:1px;background:#F3EFE6"></span>
+      </button>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,6vw,64px)">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:24px;width:auto">
+        <button onClick="{{ toggleNav }}" aria-label="Close menu" style="background:none;border:none;color:#F3EFE6;font:400 2rem/1 'Playfair Display',serif;cursor:pointer;padding:8px 12px">×</button>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:20px">
+        <a href="index.dc.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Home</a>
+        <a href="index.dc.html#work" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Services</a>
+        <a href="index.dc.html#training" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Training</a>
+        <a href="about.dc.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.dc.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Resources</a>
+        <a href="index.dc.html#faq" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">FAQ</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration:none">864-270-1790</a>
+        <a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.7);text-decoration:none">emily@defineco.studio</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <section id="top" data-screen-label="01 Audit Hero" style="background:#354C41;padding:clamp(150px,16vw,200px) clamp(24px,6vw,88px) clamp(64px,8vw,96px)">
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+      <a data-hero="0" href="resources.dc.html" style="align-self:flex-start;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#C9C0B2;text-decoration:none">← Resources · Self-Audit</a>
+      <h1 data-hero="120" style="margin:0;font:400 clamp(2.75rem,6vw,5rem)/1.02 'Playfair Display',serif;letter-spacing:-0.02em;color:#F3EFE6"><span style="display:block">The Overwhelmed</span><span style="display:block;font-style:italic;color:#C9C0B2">Marketer's Audit</span></h1>
+      <p data-hero="260" style="margin:0;font:400 clamp(1.125rem,1.6vw,1.375rem)/1.6 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:46ch">Five sections. Twenty questions. About 10 minutes. Score as you go and your result shows up at the end.</p>
+      
+    </div>
+  </section>
+
+  <section id="audit" data-screen-label="02 Audit" style="background:#F3EFE6;padding:clamp(56px,7vw,96px) clamp(24px,6vw,88px) clamp(88px,11vw,144px)">
+    <article style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px">
+        <p style="margin:0;font:400 clamp(1.25rem,1.9vw,1.5rem)/1.55 'Montserrat',sans-serif;color:#21221F">You're the marketing department. Maybe the sales department too. Your hat rack is full, and every week somebody hands you another hat.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">So everything gets a little attention and nothing gets enough.</p>
+        <div style="margin:12px 0;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font:600 0.6875rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">First, know this</p>
+          <p style="margin:0;font:italic 400 clamp(1.875rem,3.2vw,2.5rem)/1.12 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">That's not a you problem. That's a no-plan problem.</p>
+        </div>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Most small teams already know something isn't working. This audit helps you figure out exactly what. Five sections. Twenty questions. About 10 minutes.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">One ask. Be honest. Score what's actually happening right now, not what you meant to get to.</p>
+        <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Grab a coffee. Pull up your website. Let's go.</p>
+        <div style="margin-top:12px;background:#FFFFFF;border:1px solid rgba(201,192,178,0.55);border-top:3px solid #6B2F2B;border-radius:2px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px">
+          <p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">How to score it</p>
+          <p style="margin:0;font:400 1rem/1.6 'Montserrat',sans-serif;color:rgba(33,34,31,0.88)">Rate every question 1 to 3. Tap a number and your total updates as you go.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px">
+            <div style="display:flex;gap:12px;align-items:center"><span style="flex:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid #C9C0B2;border-radius:2px;font:400 1.125rem/1 'Playfair Display',serif;color:#21221F">1</span><span style="font:500 0.875rem/1.4 'Montserrat',sans-serif;color:#21221F">Not in place</span></div>
+            <div style="display:flex;gap:12px;align-items:center"><span style="flex:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid #C9C0B2;border-radius:2px;font:400 1.125rem/1 'Playfair Display',serif;color:#21221F">2</span><span style="font:500 0.875rem/1.4 'Montserrat',sans-serif;color:#21221F">Partially in place</span></div>
+            <div style="display:flex;gap:12px;align-items:center"><span style="flex:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid #C9C0B2;border-radius:2px;font:400 1.125rem/1 'Playfair Display',serif;color:#21221F">3</span><span style="font:500 0.875rem/1.4 'Montserrat',sans-serif;color:#21221F">Solid, no action needed</span></div>
+          </div>
+        </div>
+        <sc-for list="{{ auditSections }}" as="sec" hint-placeholder-count="5">
+          <div style="margin-top:clamp(40px,5vw,64px);padding-top:clamp(32px,4vw,48px);border-top:1px solid #C9C0B2;display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+                <p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">{{ sec.label }}</p>
+                <p style="margin:0;font:500 0.8125rem/1.5 'Montserrat',sans-serif;color:rgba(33,34,31,0.6)">{{ sec.subtotal }}</p>
+              </div>
+              <h2 style="margin:0;font:400 clamp(2rem,3.6vw,2.75rem)/1.1 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">{{ sec.title }}</h2>
+              <p style="margin:0;font:400 1.125rem/1.75 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">{{ sec.intro }}</p>
+            </div>
+            <sc-for list="{{ sec.questions }}" as="q" hint-placeholder-count="4">
+              <div style="background:#FFFFFF;border:1px solid rgba(201,192,178,0.55);border-radius:2px;padding:clamp(20px,2.4vw,28px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center">
+                <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+                  <p style="margin:0;font:600 1.0625rem/1.5 'Montserrat',sans-serif;color:#21221F">{{ q.text }}</p>
+                  <p style="margin:0;font:400 0.9375rem/1.6 'Montserrat',sans-serif;color:rgba(33,34,31,0.72)">{{ q.note }}</p>
+                </div>
+                <div role="group" aria-label="Score" style="display:flex;gap:8px">
+                  <sc-for list="{{ q.opts }}" as="o" hint-placeholder-count="3">
+                    <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="{{ o.style }}">{{ o.n }}</button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="margin-top:clamp(40px,5vw,64px);background:#354C41;border-radius:2px;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#C9C0B2">Your score</p>
+              <p style="margin:0;display:flex;align-items:baseline;gap:8px"><span style="font:400 clamp(3.5rem,7vw,5rem)/1 'Playfair Display',serif;letter-spacing:-0.02em;color:#F3EFE6">{{ total }}</span><span style="font:italic 400 1.5rem/1 'Playfair Display',serif;color:#C9C0B2">/ 60</span></p>
+            </div>
+            <p style="margin:0;font:500 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.75)">{{ answeredLabel }}</p>
+          </div>
+          <div style="height:4px;background:rgba(243,239,230,0.14);border-radius:2px;overflow:hidden"><div style="{{ barStyle }}"></div></div>
+          <sc-if value="{{ incomplete }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:0;font:400 1rem/1.6 'Montserrat',sans-serif;color:rgba(243,239,230,0.85);max-width:56ch">Answer all twenty and your result shows up here. Max is 60.</p>
+          </sc-if>
+          <sc-if value="{{ complete }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:12px;padding-top:20px;border-top:1px solid rgba(201,192,178,0.3)">
+              <p style="margin:0;font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#C9C0B2">{{ band.range }}</p>
+              <p style="margin:0;font:italic 400 clamp(1.875rem,3.2vw,2.5rem)/1.12 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6">{{ band.title }}</p>
+              <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:60ch">{{ band.body }}</p>
+              <p style="margin:0;font:500 0.9375rem/1.6 'Montserrat',sans-serif;color:#C9C0B2">{{ lowest }}</p>
+            </div>
+          </sc-if>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+            <a href="#close" style="display:inline-block;background:#F3EFE6;color:#354C41;border-radius:2px;padding:17px 30px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#C9C0B2">Let's talk shop</a>
+            <button type="button" onClick="{{ resetAudit }}" style="background:transparent;border:1px solid rgba(243,239,230,0.5);color:#F3EFE6;border-radius:2px;padding:16px 26px;font:600 0.75rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:border-color 180ms ease-out" style-hover="border-color:#F3EFE6">Start over</button>
+          </div>
+        </div>
+        <p style="margin:clamp(24px,3vw,32px) 0 0;font:italic 400 clamp(1.375rem,2.2vw,1.75rem)/1.3 'Playfair Display',serif;color:#6B2F2B">Wherever you landed, you now know more than you did 10 minutes ago. That's the point.</p>
+        <div style="margin-top:clamp(24px,3vw,32px);padding-top:28px;border-top:1px solid #C9C0B2;display:flex;flex-direction:column;gap:4px">
+          <span style="font:400 1.5rem/1.2 'Playfair Display',serif;color:#21221F">Emily Hamilton</span>
+          <span style="font:500 0.8125rem/1.5 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(33,34,31,0.7)">Define Co. · Building Aviation Marketing Teams</span>
+        </div>
+    </article>
+  </section>
+
+  <section id="close" data-rail="10 &nbsp;Close" data-screen-label="10 Close" style="background:#6B2F2B;padding:180px clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto;text-align:center">
+      <h2 data-reveal="" style="margin:0 auto 24px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;max-width:22ch">Tell me what's going on.</h2>
+      <p data-reveal="" style="margin:0 auto 56px;font:400 clamp(1.1875rem,1.6vw,1.4375rem)/1.55 'Montserrat',sans-serif;color:#F3EFE6;max-width:46ch">No pitch deck, no discovery fee. You tell me what isn't landing and I tell you straight whether I'm the right person for it.</p>
+      <form data-reveal="" data-reveal-delay="90" onSubmit="{{ onSubmit }}" style="max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:16px;text-align:left">
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Name</span>
+          <input type="text" name="name" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Company</span>
+          <input type="text" name="company" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Email</span>
+          <input type="email" name="email" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">What's going on?</span>
+          <textarea name="message" rows="5" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.6 'Montserrat',sans-serif;resize:vertical;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none"></textarea>
+        </label>
+        <button type="submit" style="margin-top:12px;align-self:flex-start;background:#F3EFE6;color:#6B2F2B;border:none;border-radius:2px;padding:19px 36px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 180ms ease-out" style-hover="background:#C9C0B2">Send it</button>
+        <p style="margin:16px 0 0;font:500 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.7)">Or just call. <a href="tel:8642701790" style="color:#F3EFE6;text-decoration-color:#F3EFE6">864-270-1790</a></p>
+      </form>
+    </div>
+  </section>
+
+  <footer style="background:#21221F;padding:64px clamp(24px,6vw,88px)">
+    
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display: block; align-self: flex-start; height: 76px; width: 345px; margin-bottom: 8px">
+        <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6">Emily Hamilton<span style="font-weight:400;color:rgba(243,239,230,0.6)"> · Founder, Define Co.</span></span>
+        <a href="tel:8642701790" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">864-270-1790</a>
+        <a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">emily@defineco.studio</a>
+      </div>
+      <div aria-label="Services" style="display:flex;flex-direction:column;gap:10px">
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Brand and Messaging</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Social Strategy and Growth</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Trade Show Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Website Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Print and Digital Ad Strategy</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+          <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
+            <a href="https://nbaa.org/" target="_blank" rel="noopener noreferrer" aria-label="NBAA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/nbaa-member-sm.png" alt="Member of NBAA" style="display:block;height:34px;width:auto"></a>
+          </span>
+          <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
+            <a href="https://glada.aero/" target="_blank" rel="noopener noreferrer" aria-label="GLADA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/glada-member-sm.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:36px;width:auto"></a>
+          </span>
+        </div>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.6)">© 2026 Define Co. Greenville, South Carolina.</span>
+      </div>
+    </div></footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page behavior&quot;}}">
+
+const AUDIT = [
+  { label: 'Section 1', title: "It's Time To Take The Blinders Off", intro: "You live in your business every day, but your audience doesn't. Try to think as if you know nothing about your company.", questions: [
+    ["Open your website right now. Without scrolling, can you tell within 5 seconds who you are, what you do, and who it's for?", "If you have to think about it, your audience already moved on."],
+    ["Does your headline speak to your customer or does it speak to you?", "There's a big difference between what you want to say and what they need to hear."],
+    ["Is there a clear next step on your homepage, or does a visitor have to go looking?", "If they have to hunt for it, they won't."],
+    ["If a stranger landed on your site today, would they know how to hire you?", "No explanation needed from you. It should all be right there."] ] },
+  { label: 'Section 2', title: 'Your Social Presence', intro: "Open your best platform right now. Was it a quick decision which one to open? If you hesitated, that's your first answer.", questions: [
+    ["Does your profile tell someone immediately who you are and who you help?", "Your bio is prime real estate. Don't waste it on vague buzzwords."],
+    ["Does your page actually look like your business?", "If someone visited your profile before your website, would they get the same feeling and message?"],
+    ["Are you showing up consistently, or is your last post from three weeks ago?", "Inconsistency tells your audience you might run your business the same way."],
+    ["Is what you're posting actually resonating with your audience, or does it feel like you're just posting to post?", "Likes are nice, but are you attracting the right people?"] ] },
+  { label: 'Section 3', title: 'Your Content & Visibility', intro: "This is where small teams feel the most overwhelmed. You're creating content but nobody's finding it. Or worse, you're not creating at all because you don't know where to start.", questions: [
+    ["Can you clearly name the one platform or channel where your ideal client would find you?", "If your answer is \"everywhere,\" we can probably take some things off your plate."],
+    ["Do you have content out there that works for you when you're not working?", "Or does your visibility completely stop when you stop posting?"],
+    ["Is your content teaching, helping, or solving something for your audience, or is it just talking about yourself?", "If you're not sure if it's working, that's a funnel problem we can address."],
+    ["Could you pull up your top three posts, pages, or pieces of content from the last 90 days right now?", "If you don't know what's working, you're throwing spaghetti at the wall and hoping something sticks."] ] },
+  { label: 'Section 4', title: 'Your Follow Up', intro: "Someone showed interest. Now what? This is where most small businesses quietly lose the sale. Not because the product wasn't good, but because there was no real plan for what happens next. It's like going fishing without any bait.", questions: [
+    ["Do you have a clear process for what happens after someone reaches out?", ""],
+    ["Are you following up with leads who didn't convert, or are you letting them go cold?", "Hoping they come back on their own isn't a plan."],
+    ["If someone isn't ready to buy today, are you staying in their world?", "There are simple processes that can keep you top of mind without adding more to your plate."],
+    ["Could someone else step in and run your follow up process, or does it only work because you're the one doing it every time?", "If it lives only in your head, it's not a process yet."] ] },
+  { label: 'Section 5', title: 'Your Sanity & Systems', intro: "If you feel overwhelmed every time you think about your marketing, it's time for you and your sanity to make a clear plan to help you organize and execute. Without gaining any more gray hairs.", questions: [
+    ["Do you have a marketing plan you actually reference, or is it all just living in your head and on sticky notes?", ""],
+    ["Are you reacting to your marketing every week or are you working from a plan?", "There's a big difference between busy and productive."],
+    ["Does your current setup allow you to take a day off without your marketing completely falling apart?", ""],
+    ["If you had a clear system in place, what would you do with that time back?", "Because that's exactly what we're here to help you build."] ] }
+];
+const BANDS = [
+  { min: 20, max: 35, range: '20 to 35', title: "You're carrying too much.", body: "Not a talent problem. A plan problem. You've got real gaps, and you've probably felt them for a while. Start with your lowest scoring section. That's where the leak is. If you want a second set of eyes on it, let's talk shop." },
+  { min: 36, max: 50, range: '36 to 50', title: 'The bones are good.', body: "Something's working. But a few areas are costing you more time and more leads than they should. Pick the one section that stung the most and fix that first. Momentum comes from small wins, not a total overhaul." },
+  { min: 51, max: 60, range: '51 to 60', title: "You're doing the work.", body: "Seriously. Keep going. Now protect it. Make sure what you've built doesn't live only in your head, and keep checking what's working so you can double down on it." }
+];
+class Component extends DCLogic {
+  state = { wide: 1440, navOpen: false, scores: {} };
+
+  componentDidMount() {
+    this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._onResize = () => this.setState({ wide: window.innerWidth });
+    window.addEventListener('resize', this._onResize);
+    this._onResize();
+
+    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+    if (!this._reduced) {
+      document.querySelectorAll('[data-hero]').forEach(el => {
+        const d = parseInt(el.getAttribute('data-hero'), 10) || 0;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = 'opacity 720ms ' + ease + ', transform 720ms ' + ease;
+        setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, d + 60);
+      });
+      const items = [];
+      const prep = (el, rise, dur, delay) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(' + rise + 'px)';
+        el.style.transition = 'opacity ' + dur + 'ms ' + ease + ', transform ' + dur + 'ms ' + ease;
+        el.style.transitionDelay = delay + 'ms';
+        items.push(el);
+      };
+      document.querySelectorAll('[data-reveal]').forEach(el => prep(el, 28, 720, parseInt(el.getAttribute('data-reveal-delay'), 10) || 0));
+      document.querySelectorAll('[data-reveal-portrait]').forEach(el => prep(el, 0, 900, 0));
+      this._io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            this._io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.01, rootMargin: '0px 0px -12% 0px' });
+      items.forEach(el => this._io.observe(el));
+    }
+
+    this._onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      const on = y > 120;
+      const header = document.querySelector('[data-header]');
+      if (header) {
+        header.style.height = on ? '84px' : '96px';
+        const lg = document.querySelector('[data-logo]'); if (lg) lg.style.height = on ? '56px' : '69px';
+        header.style.background = on ? 'rgba(243,239,230,0.94)' : 'transparent';
+        header.style.backdropFilter = on ? 'blur(8px)' : 'none';
+        header.style.borderBottom = on ? '1px solid #C9C0B2' : '1px solid transparent';
+      }
+      const logo = document.querySelector('[data-logo]');
+      if (logo) logo.src = on ? 'assets/logo-ink-sm.png' : 'assets/logo-cream-sm.png';
+      const ink = on ? '#21221F' : '#F3EFE6';
+      const nav = document.querySelector('[data-nav]');
+      if (nav) Array.from(nav.children).forEach(a => {
+        if (a.style.background === '' || a.style.background === 'transparent') a.style.color = ink;
+        if (a.style.borderBottom) a.style.borderBottomColor = on ? '#6B2F2B' : '#C9C0B2';
+      });
+      const burger = document.querySelector('[data-burger]');
+      if (burger) Array.from(burger.children).forEach(s => { s.style.background = ink; });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+
+  renderVals() {
+    const w = this.state.wide;
+
+    const sc = this.state.scores;
+    const btn = (on) => 'width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:2px;cursor:pointer;font:400 1.125rem/1 Playfair Display,serif;transition:background 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out;' + (on ? 'background:#6B2F2B;border:1px solid #6B2F2B;color:#F3EFE6;' : 'background:#F3EFE6;border:1px solid #C9C0B2;color:#21221F;');
+    let total = 0, answered = 0;
+    const subs = [];
+    const auditSections = AUDIT.map((s, si) => {
+      let sub = 0, subN = 0;
+      const questions = s.questions.map((q, qi) => {
+        const key = si + '-' + qi;
+        const v = sc[key] || 0;
+        if (v) { sub += v; subN++; }
+        return { text: q[0], note: q[1], opts: [1, 2, 3].map(n => ({ n, pressed: v === n ? 'true' : 'false', style: btn(v === n), pick: () => this.setState(st => ({ scores: { ...st.scores, [key]: n } })) })) };
+      });
+      total += sub; answered += subN; subs.push({ title: s.title, sub, done: subN === 4 });
+      return { label: s.label, title: s.title, intro: s.intro, subtotal: subN ? (sub + ' / 12') : '', questions };
+    });
+    const complete = answered === 20;
+    const band = BANDS.find(b => total >= b.min && total <= b.max) || BANDS[0];
+    const low = subs.slice().sort((a, b) => a.sub - b.sub)[0];
+    return {
+      onSubmit: e => { e.preventDefault(); },
+      auditSections,
+      total,
+      answeredLabel: answered + ' of 20 answered',
+      barStyle: 'height:100%;background:#C9C0B2;transition:width 300ms ease-out;width:' + Math.round(total / 60 * 100) + '%',
+      complete, incomplete: !complete, band,
+      lowest: complete ? ('Your lowest section: ' + low.title + ' (' + low.sub + ' / 12). Start there.') : '',
+      resetAudit: () => this.setState({ scores: {} }),
+      storyWide: w >= 720,
+      storyNarrow: w < 720,
+      navWide: w >= 1080,
+      navNarrow: w < 1080,
+      navOpen: this.state.navOpen,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

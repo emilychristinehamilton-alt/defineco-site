@@ -37,9 +37,9 @@
     </div>
   </sc-if>
 
-  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:50;height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(24px,6vw,88px);transition:height 300ms ease-out,background 300ms ease-out">
+  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:50;height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(24px,6vw,88px);transition:height 300ms ease-out,background 300ms ease-out">
     <a href="#top" aria-label="Define Co. home" style="display:flex;align-items:center;text-decoration:none">
-      <img src="assets/logo-ink.png" alt="Define Co." style="display:block;height:33px;width:auto">
+      <img src="assets/logo-ink-sm.png" alt="Define Co." style="display:block;height:33px;width:auto">
     </a>
     <sc-if value="{{ navWide }}" hint-placeholder-val="{{ true }}">
       <nav style="display:flex;align-items:center;gap:36px">
@@ -47,6 +47,7 @@
         <a href="#work" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Services</a>
         <a href="#training" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Training</a>
         <a href="about.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">About</a>
+        <a href="resources.dc.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Resources</a>
         <a href="#faq" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">FAQ</a>
         <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#21221F;text-decoration:none">864-270-1790</a>
         <a href="#close" style="background:#6B2F2B;color:#F3EFE6;border-radius:2px;padding:15px 28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#21221F">Let's talk</a>
@@ -63,7 +64,7 @@
   <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,6vw,64px)">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <img src="assets/logo-cream.png" alt="Define Co." style="display:block;height:24px;width:auto">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:24px;width:auto">
         <button onClick="{{ toggleNav }}" aria-label="Close menu" style="background:none;border:none;color:#F3EFE6;font:400 2rem/1 'Playfair Display',serif;cursor:pointer;padding:8px 12px">×</button>
       </div>
       <nav style="display:flex;flex-direction:column;gap:20px">
@@ -71,6 +72,7 @@
         <a href="#work" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Services</a>
         <a href="#training" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Training</a>
         <a href="about.dc.html" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.dc.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Resources</a>
         <a href="#faq" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">FAQ</a>
       </nav>
       <div style="display:flex;flex-direction:column;gap:8px">
@@ -96,9 +98,9 @@
           <a href="#close" style="background:#6B2F2B;color:#F3EFE6;border-radius:2px;padding:19px 36px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#21221F">Let's talk shop</a>
           <a href="#model" style="background:transparent;border:1px solid #21221F;color:#21221F;border-radius:2px;padding:18px 35px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out,color 180ms ease-out" style-hover="background:#21221F;color:#F3EFE6">How it works</a>
         </div>
-      </div><div data-hero-img="" style="padding:calc(clamp(48px,7vw,96px) + 62px) 0 clamp(48px,7vw,96px) 0">
-        <div style="height:min(50vh,500px);border-left:2px solid #C9C0B2">
-          <image-slot id="hero-emily" shape="rect" placeholder="Hero: Emily in a hangar or shop floor, 4:5 portrait, negative space at left" style="height: 700px"></image-slot>
+      </div><div data-hero-img="" style="align-self:stretch;display:flex;flex-direction:column;padding:clamp(48px,7vw,96px) 0 clamp(48px,7vw,96px) 0">
+        <div style="flex:1;min-height:min(70vh,560px);border-left:2px solid #C9C0B2">
+          <img src="assets/hero-emily-web.jpg" alt="Overhead view of Emily working on a laptop surrounded by aviation magazines" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%">
         </div>
       </div>
       
@@ -112,7 +114,7 @@
     <div style="max-width:1200px;margin:0 auto">
       <h2 data-reveal="" style="margin:0 0 clamp(56px,7vw,96px);font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;max-width:20ch">You don't get deliverables. You get momentum.</h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:48px">
-        <div data-reveal="" data-reveal-delay="0">
+        <div data-reveal="" data-reveal-delay="0" style="border-left:1px solid rgba(201,192,178,0.24);padding-left:48px">
           <p style="margin:0 0 12px;font:400 5.5rem/1 'Playfair Display',serif;color:#C9C0B2">01</p>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#F3EFE6">The Discovery</h3>
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:42ch">Your team, your collateral, your goals, and the human side of the business. How you do what you do, and why you do it that way. That's the part most marketing skips, and it's where the real story lives. We'll find out where your major pain points are and create an actionable gameplan on how to move forward.</p>
@@ -122,7 +124,7 @@
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#F3EFE6">The Work</h3>
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:42ch">Trade show, website, social, brand, whichever one brought you here. You get a plan built for your business. Not a template. Not a folder of generic tactics pulled off a shelf. I get in the weeds with you, figure out what's actually going to work, and build it out step by step. You'll always know what's happening and why.</p>
         </div>
-        <div data-reveal="" data-reveal-delay="240" style="border-left:1px solid rgba(201,192,178,0.24);padding-left:48px">
+        <div data-reveal="" data-reveal-delay="240" style="border-left:1px solid rgba(201,192,178,0.24);border-right:1px solid rgba(201,192,178,0.24);padding-left:48px;padding-right:48px">
           <p style="margin:0 0 12px;font:400 5.5rem/1 'Playfair Display',serif;color:#C9C0B2">03</p>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#F3EFE6">The Handoff</h3>
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:42ch">Documentation, frameworks, walkthrough videos, plus live recorded sessions. Your team learns the how and the why. Hand it to a new hire on day one and they know what to do. This is what pushes your team forward and keeps things moving. So you grow and expand instead of spinning your wheels. That's long term success.</p>
@@ -181,19 +183,37 @@
 
       
     </div>
-  </section><section data-rail="04 &nbsp;Proof" data-screen-label="04 Proof" style="background:#C9C0B2;padding:120px clamp(24px,6vw,88px)">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 1140px; height: 134px">
-      <p data-reveal="" style="margin:0;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(33,34,31,0.75)">marketing from the inside</p>
-      <div data-reveal="" data-reveal-delay="90" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:64px">
-        <img src="assets/nbaa-member.png" alt="Member of NBAA" style="display:block;height:52px;width:auto;flex:none">
-        <span style="display:flex;align-items:center;gap:16px;height:52px">
-          <span style="display:flex;align-items:baseline;font:400 3.25rem/1 'Playfair Display',serif;color:#21221F">12<span style="font:400 1.5rem/1 'Playfair Display',serif;margin-left:2px">+</span></span>
-          <span style="display:flex;flex-direction:column;gap:4px;border-left:1px solid rgba(33,34,31,0.35);padding-left:16px;font:600 0.75rem/1.35 'Montserrat',sans-serif;letter-spacing:0.16em;text-transform:uppercase;color:#21221F">
-            <span>Years in</span>
-            <span>Business Aviation</span>
-          </span>
-        </span>
-        <img src="assets/glada-member.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:64px;width:auto;flex:none">
+  </section><section data-rail="04 &nbsp;Proof" data-screen-label="04 Proof" style="background:#C9C0B2;padding:clamp(72px,9vw,112px) clamp(24px,6vw,88px)">
+    <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(32px,4vw,48px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:20px;width:100%;max-width:560px">
+        <span aria-hidden="true" style="flex:1;height:1px;background:rgba(33,34,31,0.3)"></span>
+        <p style="margin:0;flex:none;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.22em;text-transform:uppercase;color:#6B2F2B">Marketing from the inside</p>
+        <span aria-hidden="true" style="flex:1;height:1px;background:rgba(33,34,31,0.3)"></span>
+      </div>
+      <div style="width:100%;display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;background:rgba(243,239,230,0.38);border:1px solid rgba(33,34,31,0.14);border-radius:2px">
+        <div data-reveal="" data-reveal-delay="0" style="flex:1 1 240px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 24px">
+          <div style="height:68px;display:flex;align-items:center;justify-content:center">
+            <a href="https://nbaa.org/" target="_blank" rel="noopener noreferrer" aria-label="NBAA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/nbaa-member-sm.png" alt="Member of NBAA" style="display:block;height:48px;width:auto;flex:none"></a>
+          </div>
+        </div>
+        <div aria-hidden="true" style="flex:none;width:1px;align-self:stretch;margin:28px 0;background:rgba(33,34,31,0.22)"></div>
+        <div data-reveal="" data-reveal-delay="90" style="flex:1 1 240px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 24px">
+          <div style="height:68px;display:flex;align-items:center;justify-content:center">
+            <span style="display:flex;align-items:center;gap:16px">
+              <span style="display:flex;align-items:baseline;font:400 4rem/1 'Playfair Display',serif;letter-spacing:-0.02em;color:#21221F">12<span style="font:italic 400 2rem/1 'Playfair Display',serif;margin-left:2px;color:#6B2F2B">+</span></span>
+              <span style="display:flex;flex-direction:column;gap:4px;border-left:1px solid rgba(33,34,31,0.35);padding-left:16px;font:600 0.75rem/1.35 'Montserrat',sans-serif;letter-spacing:0.16em;text-transform:uppercase;color:#21221F">
+                <span>Years in</span>
+                <span>Business Aviation</span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div aria-hidden="true" style="flex:none;width:1px;align-self:stretch;margin:28px 0;background:rgba(33,34,31,0.22)"></div>
+        <div data-reveal="" data-reveal-delay="180" style="flex:1 1 240px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 24px">
+          <div style="height:68px;display:flex;align-items:center;justify-content:center">
+            <a href="https://glada.aero/" target="_blank" rel="noopener noreferrer" aria-label="GLADA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/glada-member-sm.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:64px;width:auto;flex:none"></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -204,49 +224,44 @@
       <h2 data-reveal="" style="margin:0 0 clamp(48px,6vw,80px);font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">The work</h2>
 
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;margin-bottom:32px">
-        <a data-reveal="" data-reveal-delay="0" href="/services/brand-messaging" style="display:block;text-decoration:none;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)" style-hover="border-color:#354C41;transform:translateY(-3px)">
+        <div data-reveal="" data-reveal-delay="0" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
-            <img src="assets/work-brand.png" alt="Emily working at a desk with a laptop and phone" style="display:block;width:100%;height:100%;object-fit:cover;object-position:40% 68%;transform:scale(1.18);transform-origin:40% 68%">
+            <img loading="lazy" decoding="async" src="assets/work-brand-3-web.jpg" alt="Emily smiling on a phone call, seated on a sofa with a laptop and coffee" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 64%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Brand and Messaging</h3>
-          <p style="margin:0 0 24px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Most aviation companies are not unclear about what they do. They are unclear about how to say it. We get to the real story, then build the language, the positioning, and the proof points your whole team can use the same way in every room.</p>
-          <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#6B2F2B;border-bottom:1px solid #6B2F2B;padding-bottom:2px">Brand and Messaging ›</span>
-        </a>
-        <a data-reveal="" data-reveal-delay="90" href="/services/social-strategy" style="display:block;text-decoration:none;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)" style-hover="border-color:#354C41;transform:translateY(-3px)">
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Most aviation companies are not unclear about what they do. They are unclear about how to say it. We get to the real story, then build the language, the positioning, and the proof points your whole team can use the same way in every room.</p>
+        </div>
+        <div data-reveal="" data-reveal-delay="90" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
-            <img src="assets/work-social.png" alt="Working at a laptop in a cafe, inbox open" style="display:block;width:100%;height:100%;object-fit:cover;object-position:40% center">
+            <img loading="lazy" decoding="async" src="assets/work-website-2-web.jpg" alt="Emily typing on a laptop with a coffee mug in hand" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center 60%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Social Strategy and Growth</h3>
-          <p style="margin:0 0 24px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Posting more is not a strategy. You get a plan tied to how buyers in this industry actually decide, a content approach your team can sustain, and the campaign built once with you so the next one does not wait on an agency.</p>
-          <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#6B2F2B;border-bottom:1px solid #6B2F2B;padding-bottom:2px">Social Strategy and Growth ›</span>
-        </a>
-        <a data-reveal="" data-reveal-delay="180" href="/services/trade-show-strategy" style="display:block;text-decoration:none;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)" style-hover="border-color:#354C41;transform:translateY(-3px)">
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Posting more is not a strategy. You get a plan tied to how buyers in this industry actually decide, a content approach your team can sustain, and the campaign built once with you so the next one does not wait on an agency.</p>
+        </div>
+        <div data-reveal="" data-reveal-delay="180" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
-            <img src="assets/work-tradeshow.png" alt="Walking up to NBAA-BACE at the Las Vegas Convention Center West Hall" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%">
+            <img loading="lazy" decoding="async" src="assets/work-tradeshow-web.jpg" alt="NBAA-BACE banner on the Las Vegas Convention Center West Hall" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Trade Show Strategy</h3>
-          <p style="margin:0 0 24px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">The show is the biggest line item and the least planned. We set the goal, the message on the floor, what the booth has to do, who your team talks to, and the follow up that starts before you fly home. Then we measure what it returned.</p>
-          <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#6B2F2B;border-bottom:1px solid #6B2F2B;padding-bottom:2px">Trade Show Strategy ›</span>
-        </a>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">The show is the biggest line item and the least planned. We set the goal, the message on the floor, what the booth has to do, who your team talks to, and the follow up that starts before you fly home. Then we measure what it returned.</p>
+        </div>
       </div>
 
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px">
-        <a data-reveal="" data-reveal-delay="0" href="/services/website-strategy" style="display:block;text-decoration:none;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)" style-hover="border-color:#354C41;transform:translateY(-3px)">
+        <div data-reveal="" data-reveal-delay="0" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
-            <img src="assets/work-website.jpg" alt="The Define Co. website open on a laptop" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
+            <img loading="lazy" decoding="async" src="assets/work-website-3-web.jpg" alt="Emily typing on a laptop on her lap" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 54%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Website Strategy</h3>
-          <p style="margin:0 0 24px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">Your website should be your hardest working team member. I map what's working, what's working against you, and how it should be structured for the person actually trying to find what they need. You get clear recommendations and a plan to fix it. I'm not your developer, but I'll work alongside yours to get it done right.</p>
-          <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#6B2F2B;border-bottom:1px solid #6B2F2B;padding-bottom:2px">Website Strategy ›</span>
-        </a>
-        <a data-reveal="" data-reveal-delay="90" href="/services/print-digital-ads" style="display:block;text-decoration:none;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)" style-hover="border-color:#354C41;transform:translateY(-3px)">
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">Your website should be your hardest working team member. I map what's working, what's working against you, and how it should be structured for the person actually trying to find what they need. You get clear recommendations and a plan to fix it. I'm not your developer, but I'll work alongside yours to get it done right.</p>
+        </div>
+        <div data-reveal="" data-reveal-delay="90" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
-            <img src="assets/work-ads.webp" alt="Define Co. cap with aviation trade magazines and a mic on a wood table" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center 55%">
+            <img loading="lazy" decoding="async" src="assets/work-ads-2-web.jpg" alt="Overhead view of Emily reading an aviation magazine spread beside AIN and AvBuyer" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 54%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Print and Digital Ad Strategy</h3>
-          <p style="margin:0 0 24px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">Trade press and digital placement still work. But only when the placement and the message actually match. I help you figure out where to show up, what the creative says at a glance, and how your spend tracks the show calendar instead of running on autopilot.</p>
-          <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#6B2F2B;border-bottom:1px solid #6B2F2B;padding-bottom:2px">Print and Digital Ad Strategy ›</span>
-        </a>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">Trade press and digital placement still work. But only when the placement and the message actually match. I help you figure out where to show up, what the creative says at a glance, and how your spend tracks the show calendar instead of running on autopilot.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -269,7 +284,7 @@ instead of needing rescued every time it does, inquire below.</p>
         <a href="training.dc.html" style="background:#F3EFE6;color:#354C41;border-radius:2px;padding:19px 36px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background 180ms ease-out" style-hover="background:#C9C0B2">Inquire About Training</a>
       </div>
       <div style="height:min(58vh,540px)">
-        <img src="assets/training-photo.jpg" alt="Team working through a plan together with a laptop, notebook and printed chart" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
+        <img loading="lazy" decoding="async" src="assets/training-photo-sm.jpg" alt="Team working through a plan together with a laptop, notebook and printed chart" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
       </div>
     </div>
   </section>
@@ -278,12 +293,12 @@ instead of needing rescued every time it does, inquire below.</p>
     <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:clamp(40px,6vw,88px);align-items:start">
       <div style="position:sticky;top:120px">
         <div data-reveal-portrait="" style="aspect-ratio:4/5;width:100%">
-          <image-slot id="portrait-emily" shape="rect" placeholder="Portrait of Emily, 4:5, warm and editorial, ivory or taupe ground"></image-slot>
+          <img loading="lazy" decoding="async" src="assets/portrait-emily-5-sm.jpg" alt="Emily seated on a white studio floor with aviation magazines and a laptop" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 90%">
         </div>
       </div>
       <div style="max-width:720px">
         <p data-reveal="" style="margin:0 0 20px;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">My Story</p>
-        <h2 data-reveal="" style="margin:0 0 28px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">I've Been in Your Shoes</h2>
+        <h2 data-reveal="" style="margin:0 0 28px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Hi, I'm Emily Hamilton. I've Been in Your Shoes.</h2>
         <div data-reveal="" style="margin:0 0 40px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch"><p dir="ltr">I know what it's like to be a small team. I've been a one man team, and I've had a teammate. Building marketing from the inside out with budget restraints, low bandwidth, and a to do list that never ends isn't a small task, it's the whole job. I spent 12+ years building marketing from the ground up in business aviation. No roadmap. No shortcuts.&nbsp;</p>
 <p dir="ltr"></p></div><div data-reveal="" style="margin:0 0 40px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch"><p dir="ltr">That's why Define Co. exists. Not another agency you have to train. A way to build the systems and frameworks that keep your momentum going, no matter how small your team is right now.</p>
 <p dir="ltr"></p></div>
@@ -296,7 +311,7 @@ instead of needing rescued every time it does, inquire below.</p>
     <div style="max-width:1200px;margin:0 auto">
       <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:clamp(40px,6vw,80px);align-items:center">
       <div>
-        <p data-reveal="" style="margin: 0 0 20px; font: 500 0.75rem/1.5 'Montserrat',sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #f2eeda">WHERE I STAND</p><h2 style="margin:0 0 32px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6">More content isn't the answer.</h2>
+        <p data-reveal="" style="margin: 0 0 20px; font: 500 0.75rem/1.5 'Montserrat',sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #f2eeda">WHERE I STAND</p><h2 style="margin:0 0 32px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6">More content isn't <em style="font-style:italic">always</em> the answer.</h2>
         <div style="display:flex;flex-direction:column;gap:24px">
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);max-width:62ch">Everybody knows this is a relationship industry. Everybody says it. Then we all go push content like we're going out of style.</p>
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);max-width:62ch">Here's what nobody wants to say. Volume without substance doesn't build reach, it costs you trust. And in an industry where the players are spending real money on real decisions, trust is the only thing you're actually selling.</p>
@@ -304,20 +319,24 @@ instead of needing rescued every time it does, inquire below.</p>
         </div>
       </div>
       <div style="height:min(52vh,480px)">
-        <image-slot id="pov-content" shape="rect" placeholder="Desk or shop-floor detail, 4:5, quiet and documentary"></image-slot>
+        <img loading="lazy" decoding="async" src="assets/pov-content-2-web.jpg" alt="Emily reading a magazine by a tall sunlit window, laptop on the sill" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%">
       </div>
       </div>
 
-      <figure data-reveal-quote="" style="margin:128px 0;margin-left:calc(-1 * clamp(0px,4vw,72px));display:flex;gap:20px;align-items:flex-start">
-        <span aria-hidden="true" style="flex:none;margin-top:0.6em">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 3.5h20v13H9.5L4 22v-5.5H2z" stroke="#6B2F2B" stroke-width="1.6" fill="none"></path></svg>
-        </span>
-        <blockquote style="margin:0;font:500 clamp(2rem,4.4vw,3.75rem)/1.15 'Playfair Display',serif;color:#F3EFE6;max-width:26ch">Accelerate who you are, not replace who you are.</blockquote>
+      <figure data-reveal-quote="" style="margin:clamp(96px,11vw,128px) 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(28px,4vw,48px);align-items:start">
+        <div aria-hidden="true" style="width:2px;align-self:stretch;background:#C9C0B2"></div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <blockquote style="margin:0;display:flex;flex-direction:column;gap:6px">
+            <span style="font:400 clamp(2.5rem,5.4vw,5rem)/1.02 'Playfair Display',serif;letter-spacing:-0.025em;color:#F3EFE6">The best marketing in this industry</span>
+            <span style="font:italic 400 clamp(2.5rem,5.4vw,5rem)/1.06 'Playfair Display',serif;letter-spacing:-0.02em;color:#C9C0B2">still sounds like a person.</span>
+          </blockquote>
+          <p style="margin:32px 0 0;font:400 1.125rem/1.6 'Montserrat',sans-serif;color:rgba(243,239,230,0.78);max-width:46ch">Accelerate who you are, <em style="font-style:italic">not</em> replace who you are.</p>
+        </div>
       </figure>
 
       <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:clamp(40px,6vw,80px);align-items:center">
-      <div style="height:min(52vh,480px)">
-        <img src="assets/pov-ai.jpg" alt="Two people at a desk with digital strategy icons overlaid" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
+      <div style="aspect-ratio:3/2;border-radius:2px;overflow:hidden">
+        <img loading="lazy" decoding="async" src="assets/pov-ai-2-sm.jpg" alt="AI tools arranged in a circle: ChatGPT, Claude, Notion, Copilot, Perplexity and Gemini" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
       </div>
       <div>
         <p data-reveal="" style="margin: 0 0 20px; font: 500 0.75rem/1.5 'Montserrat',sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #f2eeda">WHERE I STAND ON AI</p><h2 style="margin:0 0 32px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6">On AI</h2>
@@ -349,7 +368,7 @@ instead of needing rescued every time it does, inquire below.</p>
             <span aria-hidden="true" style="{{ icon0 }}">+</span>
           </button>
           <div style="{{ panel0 }}">
-            <p style="margin:0;padding:0 0 28px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.85);max-width:62ch">Project based, not a retainer you have to justify every month. We start with discovery, I build the strategy and the work with your team in the room, then I train them on it and document it. After that I stay available as a partner when you want a second set of eyes.</p>
+            <p style="margin:0;padding:0 0 28px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.85);max-width:62ch">Both project based and retainer, depending on what your team needs. Either way, the focus is the same: getting the strategy and the training into your team's hands. I carry the work while you learn it and build the runway so you're ready to take off and lead it yourselves. And after that, I'm still here as a partner whenever you want a second set of eyes.</p>
           </div>
         </div>
         <div style="border-top:1px solid #C9C0B2">
@@ -359,15 +378,6 @@ instead of needing rescued every time it does, inquire below.</p>
           </button>
           <div style="{{ panel1 }}">
             <p style="margin:0;padding:0 0 28px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.85);max-width:62ch">I do the strategy side. Keyword and buyer research for this industry, site structure, what each page has to earn, and the copy that goes on it. For technical work, schema, site speed, and migrations, I bring in a specialist I trust and manage them alongside your developer. I would rather tell you that than pretend it is all in house.</p>
-          </div>
-        </div>
-        <div style="border-top:1px solid #C9C0B2">
-          <button onClick="{{ toggle2 }}" aria-expanded="{{ open2 }}" style="width:100%;background:none;border:none;padding:28px 0;display:flex;gap:24px;align-items:flex-start;justify-content:space-between;text-align:left;cursor:pointer">
-            <span style="font:600 1.0625rem/1.5 'Montserrat',sans-serif;color:#21221F">You're more expensive than the agency we quoted.</span>
-            <span aria-hidden="true" style="{{ icon2 }}">+</span>
-          </button>
-          <div style="{{ panel2 }}">
-            <p style="margin:0;padding:0 0 28px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.85);max-width:62ch">Sometimes I am, per project. The difference is what you own at the end. An agency retainer keeps the knowledge on their side, and you pay again next year for the same learning curve. Here your team ends up with the strategy, the documentation, and the skill to run it. If budget is genuinely tight, we scope smaller and start where it moves the needle.</p>
           </div>
         </div>
         <div style="border-top:1px solid #C9C0B2">
@@ -431,24 +441,25 @@ instead of needing rescued every time it does, inquire below.</p>
   <footer style="background:#21221F;padding:64px clamp(24px,6vw,88px)">
     <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start">
       <div style="display:flex;flex-direction:column;gap:12px">
-        <img src="assets/logo-cream.png" alt="Define Co." style="display: block; align-self: flex-start; height: 57px; width: 267px; margin-bottom: 8px">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display: block; align-self: flex-start; height: 57px; width: 267px; margin-bottom: 8px">
+        <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6">Emily Hamilton<span style="font-weight:400;color:rgba(243,239,230,0.6)"> &middot; Founder, Define Co.</span></span>
         <a href="tel:8642701790" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">864-270-1790</a><a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">emily@defineco.studio</a>
         
       </div>
-      <nav style="display:flex;flex-direction:column;gap:10px">
-        <a href="/services/brand-messaging" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Brand and Messaging</a>
-        <a href="/services/social-strategy" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Social Strategy and Growth</a>
-        <a href="/services/trade-show-strategy" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Trade Show Strategy</a>
-        <a href="/services/website-strategy" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Website Strategy</a>
-        <a href="/services/print-digital-ads" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);text-decoration:none">Print and Digital Ad Strategy</a>
-      </nav>
+      <div aria-label="Services" style="display:flex;flex-direction:column;gap:10px">
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Brand and Messaging</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Social Strategy and Growth</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Trade Show Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Website Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Print and Digital Ad Strategy</span>
+      </div>
       <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
         <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
           <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
-            <img src="assets/nbaa-member.png" alt="Member of NBAA" style="display:block;height:34px;width:auto">
+            <a href="https://nbaa.org/" target="_blank" rel="noopener noreferrer" aria-label="NBAA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/nbaa-member-sm.png" alt="Member of NBAA" style="display:block;height:34px;width:auto"></a>
           </span>
           <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
-            <img src="assets/glada-member.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:36px;width:auto">
+            <a href="https://glada.aero/" target="_blank" rel="noopener noreferrer" aria-label="GLADA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/glada-member-sm.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:36px;width:auto"></a>
           </span>
         </div>
         <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.6)">© 2026 Define Co. Greenville, South Carolina.</span>
@@ -463,6 +474,8 @@ class Component extends DCLogic {
   state = { wide: 1440, open: 0, navOpen: false };
 
   componentDidMount() {
+    const __hashScroll = () => { const id = (location.hash || '').slice(1); if (!id) return; const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'auto' }); };
+    setTimeout(__hashScroll, 60); setTimeout(__hashScroll, 400);
     this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this._onResize = () => this.setState({ wide: window.innerWidth });
     window.addEventListener('resize', this._onResize);
@@ -519,7 +532,7 @@ class Component extends DCLogic {
       const header = document.querySelector('[data-header]');
       if (header) {
         const on = y > 120;
-        header.style.height = on ? '68px' : '88px';
+        header.style.height = on ? '84px' : '96px';
         header.style.background = on ? 'rgba(243,239,230,0.94)' : 'transparent';
         header.style.backdropFilter = on ? 'blur(8px)' : 'none';
         header.style.borderBottom = on ? '1px solid #C9C0B2' : '1px solid transparent';
