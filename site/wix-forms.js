@@ -79,6 +79,10 @@
       });
     }).then(function (r) {
       if (!r.ok) throw new Error('submit ' + r.status);
+      // Count the lead in Google Analytics, tagged with the form and the page it came from.
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', { form_name: kind, page_path: location.pathname });
+      }
       return r.json();
     });
   }
