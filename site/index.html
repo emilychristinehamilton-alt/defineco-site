@@ -109,6 +109,12 @@
   input::placeholder, textarea::placeholder { color: rgba(243,239,230,0.5); }
   summary::-webkit-details-marker { display: none; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  /* Hero: stack text and photo on narrow screens instead of pushing the photo off-canvas. */
+  @media (max-width: 959px) {
+    #top > div:first-child { grid-template-columns: 1fr !important; gap: 0 !important; }
+    #top [data-hero-img] { padding: 0 clamp(24px,6vw,88px) 48px !important; }
+    #top [data-hero-img] > div { flex: none !important; min-height: 0 !important; height: min(115vw, 560px); border-left: 0 !important; }
+  }
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
@@ -536,6 +542,7 @@ instead of needing rescued every time it does, inquire below.</p>
         <img width="800" height="184" src="assets/logo-cream-sm.png" alt="Define Co." style="display: block; align-self: flex-start; height: 57px; width: 267px; margin-bottom: 8px">
         <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6">Emily Hamilton<span style="font-weight:400;color:rgba(243,239,230,0.6)"> &middot; Founder, Define Co.</span></span>
         <a href="tel:8642701790" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">864-270-1790</a><a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">emily@defineco.studio</a>
+        <a href="https://www.linkedin.com/in/emily-hamilton-b146a8b8/" target="_blank" rel="noopener noreferrer" aria-label="Connect on LinkedIn (opens in a new tab)" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">Connect on LinkedIn</a>
         
       </div>
       <div aria-label="Services" style="display:flex;flex-direction:column;gap:10px">
