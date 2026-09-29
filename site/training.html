@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./wix-forms.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #354C41; color: #21221F; font-family: 'Montserrat', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  * { box-sizing: border-box; }
+  a { color: #6B2F2B; text-decoration: underline; text-decoration-color: #6B2F2B; text-decoration-thickness: 1px; text-underline-offset: 4px; transition: text-decoration-thickness 160ms ease-out; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid #6B2F2B; outline-offset: 3px; }
+  input, textarea, select, button { font-family: inherit; }
+  input::placeholder, textarea::placeholder { color: rgba(33,34,31,0.42); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="position:relative;overflow-x:hidden;background:#354C41">
+
+  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:50;height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(24px,6vw,88px);transition:height 300ms ease-out,background 300ms ease-out">
+    <a href="index.html" aria-label="Define Co. home" style="display:flex;align-items:center;text-decoration:none">
+      <img data-logo="" src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:33px;width:auto">
+    </a>
+    <sc-if value="{{ navWide }}" hint-placeholder-val="{{ true }}">
+      <nav data-nav="" style="display:flex;align-items:center;gap:36px">
+        <a href="index.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Home</a>
+        <a href="index.html#work" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Services</a>
+        <a href="index.html#training" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none;border-bottom:1px solid #C9C0B2;padding-bottom:3px">Training</a>
+        <a href="about.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Resources</a>
+        <a href="index.html#faq" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">FAQ</a>
+        <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration:none">864-270-1790</a>
+        <a href="index.html#close" style="background:#6B2F2B;color:#F3EFE6;border-radius:2px;padding:15px 28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#21221F">Let's talk</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ navNarrow }}" hint-placeholder-val="{{ false }}">
+      <button data-burger="" onClick="{{ toggleNav }}" aria-label="Open menu" style="background:none;border:none;padding:12px;display:flex;flex-direction:column;gap:6px;cursor:pointer">
+        <span style="display:block;width:26px;height:1px;background:#F3EFE6"></span>
+        <span style="display:block;width:26px;height:1px;background:#F3EFE6"></span>
+      </button>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,6vw,64px)">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:26px;width:auto">
+        <button onClick="{{ toggleNav }}" aria-label="Close menu" style="background:none;border:none;color:#F3EFE6;font:400 2rem/1 'Playfair Display',serif;cursor:pointer;padding:8px 12px">×</button>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:20px">
+        <a href="index.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Home</a>
+        <a href="index.html#work" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Services</a>
+        <a href="index.html#training" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Training</a>
+        <a href="about.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Resources</a>
+        <a href="index.html#faq" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">FAQ</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration:none">864-270-1790</a>
+        <a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.7);text-decoration:none">emily@defineco.studio</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <section id="apply" data-screen-label="01 Apply for Training" style="background:#354C41;padding:clamp(150px,17vw,220px) clamp(24px,6vw,88px) clamp(88px,11vw,150px)">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(min(380px,100%),0.85fr) minmax(min(440px,100%),1fr);gap:clamp(48px,6vw,88px);align-items:start">
+
+      <div style="max-width:520px">
+        <p data-hero="0" style="margin:0 0 24px;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#C9C0B2">Team Training</p>
+        <h1 data-hero="120" style="margin:0 0 28px;font:400 clamp(2.75rem,5.4vw,4.5rem)/1.03 'Playfair Display',serif;letter-spacing:-0.02em;color:#F3EFE6">Inquire About Training</h1>
+        <p data-hero="220" style="margin:0 0 32px;font:400 clamp(1.125rem,1.6vw,1.4375rem)/1.55 'Montserrat',sans-serif;color:#F3EFE6;max-width:40ch">This isn't a form for everything else. This is where it starts if you want your team trained hands on.</p>
+        <p data-hero="300" style="margin:0 0 40px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:52ch">This is the deepest engagement Define Co. offers. Fully custom, built around your team and your timeline. I can only go this deep with a few teams at a time, so tell me a bit about where you're at and what you need. I'll follow up personally.</p>
+        <div data-hero="380" style="width:48px;height:2px;background:#C9C0B2;margin-bottom:40px"></div>
+        <div data-hero="380" style="display:flex;flex-direction:column;gap:10px">
+          <p style="margin:0;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#C9C0B2">Rather talk first</p>
+          <a href="tel:8642701790" style="font:400 1.375rem/1.3 'Playfair Display',serif;color:#F3EFE6;text-decoration:none;border-bottom:1px solid rgba(201,192,178,0.5);padding-bottom:4px;align-self:flex-start;transition:border-color 180ms ease-out" style-hover="border-color:#F3EFE6">864-270-1790</a>
+        </div>
+      </div>
+
+      <div data-hero="180" style="background:#F3EFE6;border-radius:2px;padding:clamp(28px,3.4vw,48px)">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:20px;padding:clamp(24px,4vw,56px) 0">
+            <div style="width:40px;height:2px;background:#6B2F2B"></div>
+            <h2 style="margin:0;font:400 clamp(1.75rem,3vw,2.5rem)/1.1 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Inquiry received.</h2>
+            <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:44ch">I read every one of these myself and I'll follow up personally, usually within two business days. If it's urgent, call me at <a href="tel:8642701790">864-270-1790</a>.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:22px">
+            <p style="margin:0 0 2px;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Training inquiry</p>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:22px">
+              <label style="display:flex;flex-direction:column;gap:8px">
+                <span style="font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.14em;text-transform:uppercase;color:rgba(33,34,31,0.7)">Name</span>
+                <input type="text" name="name" required="required" style="background:transparent;border:none;border-bottom:1px solid #C9C0B2;border-radius:0;padding:10px 0;color:#21221F;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-bottom-color:#6B2F2B;outline:none">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:8px">
+                <span style="font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.14em;text-transform:uppercase;color:rgba(33,34,31,0.7)">Company</span>
+                <input type="text" name="company" required="required" style="background:transparent;border:none;border-bottom:1px solid #C9C0B2;border-radius:0;padding:10px 0;color:#21221F;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-bottom-color:#6B2F2B;outline:none">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:8px">
+                <span style="font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.14em;text-transform:uppercase;color:rgba(33,34,31,0.7)">Email</span>
+                <input type="email" name="email" required="required" style="background:transparent;border:none;border-bottom:1px solid #C9C0B2;border-radius:0;padding:10px 0;color:#21221F;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-bottom-color:#6B2F2B;outline:none">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:8px">
+                <span style="font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.14em;text-transform:uppercase;color:rgba(33,34,31,0.7)">Phone</span>
+                <input type="tel" name="phone" style="background:transparent;border:none;border-bottom:1px solid #C9C0B2;border-radius:0;padding:10px 0;color:#21221F;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-bottom-color:#6B2F2B;outline:none">
+              </label>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:22px">
+              <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.14em;text-transform:uppercase;color:rgba(33,34,31,0.7)">Team size</span>
+              <input type="text" name="teamsize" placeholder="e.g. 4 in marketing, 20 total" style="background:transparent;border:none;border-bottom:1px solid #C9C0B2;border-radius:0;padding:10px 0;color:#21221F;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-bottom-color:#6B2F2B;outline:none">
+            </label>
+              <label style="display:flex;flex-direction:column;gap:8px">
+                <span style="font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.14em;text-transform:uppercase;color:rgba(33,34,31,0.7)">Location</span>
+                <input type="text" name="location" placeholder="City, state" style="background:transparent;border:none;border-bottom:1px solid #C9C0B2;border-radius:0;padding:10px 0;color:#21221F;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-bottom-color:#6B2F2B;outline:none">
+              </label>
+            </div>
+
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.14em;text-transform:uppercase;color:rgba(33,34,31,0.7)">What's going on with your marketing right now?</span>
+              <textarea name="situation" rows="5" required="required" style="background:transparent;border:1px solid #C9C0B2;border-radius:2px;padding:14px;color:#21221F;font:400 1.0625rem/1.6 'Montserrat',sans-serif;resize:vertical;transition:border-color 160ms ease-out" style-focus="border-color:#6B2F2B;outline:none"></textarea>
+            </label>
+
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:600 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.14em;text-transform:uppercase;color:rgba(33,34,31,0.7)">Timeline you're hoping to work within</span>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <button type="button" onClick="{{ pickAsap }}" style="{{ chipAsap }}">ASAP</button>
+                <button type="button" onClick="{{ pickNext }}" style="{{ chipNext }}">Next quarter</button>
+                <button type="button" onClick="{{ pickExploring }}" style="{{ chipExploring }}">Just exploring</button>
+              </div>
+              <input type="text" name="timeline_notes" placeholder="Anything else about timing" style="background:transparent;border:none;border-bottom:1px solid #C9C0B2;border-radius:0;padding:10px 0;color:#21221F;font:400 1rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-bottom-color:#6B2F2B;outline:none">
+            </div>
+
+            <button type="submit" style="margin-top:10px;align-self:flex-start;background:#6B2F2B;color:#F3EFE6;border:none;border-radius:2px;padding:19px 36px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 180ms ease-out" style-hover="background:#21221F">Submit</button>
+            <sc-if value="{{ formMsg }}" hint-placeholder-val="{{ false }}">
+              <p role="status" style="margin:0;font:500 0.9375rem/1.5 'Montserrat',sans-serif;color:#6B2F2B">{{ formMsg }}</p>
+            </sc-if>
+            <p style="margin:0;font:400 0.875rem/1.6 'Montserrat',sans-serif;color:rgba(33,34,31,0.6);max-width:46ch">Inquiries go straight to me, not a queue. I'll follow up personally.</p>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#21221F;padding:64px clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;align-self:flex-start;height:29px;width:auto;margin-bottom:8px">
+        <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6">Emily Hamilton<span style="font-weight:400;color:rgba(243,239,230,0.6)"> &middot; Founder, Define Co.</span></span>
+        <a href="tel:8642701790" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">864-270-1790</a>
+        <a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">emily@defineco.studio</a>
+      </div>
+      <div aria-label="Services" style="display:flex;flex-direction:column;gap:10px">
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Brand and Messaging</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Social Strategy and Growth</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Trade Show Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Website Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Print and Digital Ad Strategy</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+          <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
+            <a href="https://nbaa.org/" target="_blank" rel="noopener noreferrer" aria-label="NBAA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/nbaa-member-sm.png" alt="Member of NBAA" style="display:block;height:34px;width:auto"></a>
+          </span>
+          <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
+            <a href="https://glada.aero/" target="_blank" rel="noopener noreferrer" aria-label="GLADA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/glada-member-sm.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:36px;width:auto"></a>
+          </span>
+        </div>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.6)">© 2026 Define Co. Greenville, South Carolina.</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page behavior&quot;}}">
+class Component extends DCLogic {
+  state = { wide: 1440, navOpen: false, timeline: '', sent: false, sending: false, formMsg: '' };
+
+  componentDidMount() {
+    this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._onResize = () => this.setState({ wide: window.innerWidth });
+    window.addEventListener('resize', this._onResize);
+    this._onResize();
+
+    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+    if (!this._reduced) {
+      document.querySelectorAll('[data-hero]').forEach(el => {
+        const d = parseInt(el.getAttribute('data-hero'), 10) || 0;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = 'opacity 720ms ' + ease + ', transform 720ms ' + ease;
+        setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, d + 60);
+      });
+    }
+
+    this._onScroll = () => {
+      const on = (window.scrollY || document.documentElement.scrollTop) > 120;
+      const header = document.querySelector('[data-header]');
+      if (header) {
+        header.style.height = on ? '84px' : '96px';
+        header.style.background = on ? 'rgba(33,34,31,0.9)' : 'transparent';
+        header.style.backdropFilter = on ? 'blur(8px)' : 'none';
+        header.style.borderBottom = on ? '1px solid rgba(201,192,178,0.3)' : '1px solid transparent';
+      }
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('scroll', this._onScroll);
+  }
+
+  chip(active) {
+    return 'border-radius:2px;padding:13px 22px;font:600 0.75rem/1 Montserrat,sans-serif;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 180ms ease-out,color 180ms ease-out,border-color 180ms ease-out;'
+      + (active
+        ? 'background:#354C41;border:1px solid #354C41;color:#F3EFE6;'
+        : 'background:transparent;border:1px solid #C9C0B2;color:rgba(33,34,31,0.8);');
+  }
+
+  renderVals() {
+    const w = this.state.wide;
+    const t = this.state.timeline;
+    return {
+      navWide: w >= 1080,
+      navNarrow: w < 1080,
+      navOpen: this.state.navOpen,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      chipAsap: this.chip(t === 'asap'),
+      chipNext: this.chip(t === 'next'),
+      chipExploring: this.chip(t === 'exploring'),
+      pickAsap: () => this.setState({ timeline: 'asap' }),
+      pickNext: () => this.setState({ timeline: 'next' }),
+      pickExploring: () => this.setState({ timeline: 'exploring' }),
+      formMsg: this.state.formMsg,
+      onSubmit: e => {
+        e.preventDefault();
+        if (this.state.sending) return;
+        const labels = { asap: 'ASAP', next: 'Next quarter', exploring: 'Just exploring' };
+        this.setState({ sending: true, formMsg: 'Sending...' });
+        window.DefineForms.submit(e.target, 'training', { timeline: labels[t] || '' }).then(
+          () => { this.setState({ sending: false, formMsg: '', sent: true }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+          () => this.setState({ sending: false, formMsg: "That didn't go through. Email me at emily@defineco.studio or call 864-270-1790." })
+        );
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

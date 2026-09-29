@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./wix-forms.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F3EFE6; color: #21221F; font-family: 'Montserrat', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  * { box-sizing: border-box; }
+  a { color: #6B2F2B; text-decoration: underline; text-decoration-color: #6B2F2B; text-decoration-thickness: 1px; text-underline-offset: 4px; transition: text-decoration-thickness 160ms ease-out; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid #6B2F2B; outline-offset: 3px; }
+  input, textarea, button { font-family: inherit; }
+  input::placeholder, textarea::placeholder { color: rgba(243,239,230,0.5); }
+  summary::-webkit-details-marker { display: none; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="position:relative;overflow-x:hidden;background:#F3EFE6">
+
+  <sc-if value="{{ railOn }}" hint-placeholder-val="{{ true }}">
+    <div data-rail-root="" style="position:fixed;left:0;top:0;bottom:0;width:72px;z-index:40;pointer-events:none">
+      <div style="position:absolute;left:36px;top:140px;bottom:140px;width:1px;background:#C9C0B2"></div>
+      <div data-rail-tick="" style="position:absolute;left:36px;top:140px;width:1px;height:56px;background:#6B2F2B;transition:transform 180ms linear"></div>
+      <div data-rail-label="" style="position:absolute;left:36px;top:50%;transform:translate(-50%,-50%) rotate(90deg);white-space:nowrap;font:500 0.6875rem/1 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#C9C0B2;background:#F3EFE6;padding:10px 0">01 &nbsp;Hero</div>
+    </div>
+  </sc-if>
+
+  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:50;height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(24px,6vw,88px);transition:height 300ms ease-out,background 300ms ease-out">
+    <a href="#top" aria-label="Define Co. home" style="display:flex;align-items:center;text-decoration:none">
+      <img src="assets/logo-ink-sm.png" alt="Define Co." style="display:block;height:33px;width:auto">
+    </a>
+    <sc-if value="{{ navWide }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:36px">
+        <a href="#top" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Home</a>
+        <a href="#work" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Services</a>
+        <a href="#training" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Training</a>
+        <a href="about.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">About</a>
+        <a href="resources.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Resources</a>
+        <a href="#faq" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">FAQ</a>
+        <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#21221F;text-decoration:none">864-270-1790</a>
+        <a href="#close" style="background:#6B2F2B;color:#F3EFE6;border-radius:2px;padding:15px 28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#21221F">Let's talk</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ navNarrow }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleNav }}" aria-label="Open menu" style="background:none;border:none;padding:12px;display:flex;flex-direction:column;gap:6px;cursor:pointer">
+        <span style="display:block;width:26px;height:1px;background:#21221F"></span>
+        <span style="display:block;width:26px;height:1px;background:#21221F"></span>
+      </button>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,6vw,64px)">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:24px;width:auto">
+        <button onClick="{{ toggleNav }}" aria-label="Close menu" style="background:none;border:none;color:#F3EFE6;font:400 2rem/1 'Playfair Display',serif;cursor:pointer;padding:8px 12px">×</button>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:20px">
+        <a href="#top" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Home</a>
+        <a href="#work" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Services</a>
+        <a href="#training" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Training</a>
+        <a href="about.html" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">About</a>
+        <a href="resources.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Resources</a>
+        <a href="#faq" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">FAQ</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="tel:8642701790" style="flex:none;white-space:nowrap;font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration:none">864-270-1790</a>
+        <a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.7);text-decoration:none">emily@defineco.studio</a>
+      </div>
+    </div>
+  </sc-if>
+
+  
+
+  
+
+  <section id="top" data-rail="01 &nbsp;Define Co." data-screen-label="01 Define Co." style="background:#F3EFE6;padding:120px 0 0 0">
+    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(min(560px,100%),1.35fr) minmax(min(340px,100%),1fr);align-items:start;gap:clamp(32px,5vw,64px)">
+      <div style="padding:clamp(48px,7vw,96px) clamp(24px,6vw,88px) clamp(48px,7vw,96px) clamp(24px,6vw,88px);max-width:840px">
+        
+        <h1 data-hero="120" style="margin: 0 0 32px; font: 400 clamp(3rem,6.2vw,5.5rem)/1.02 'Playfair Display',serif; letter-spacing: -0.02em; color: #21221F">Building Aviation Marketing Teams</h1>
+        <p data-hero="0" style="margin: 0 0 28px; font: 500 0.75rem/1.5 'Montserrat',sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #6B2F2B; max-width: 60ch"><b>Business Aviation Marketing <br>Strategy, Training, and Creative</b></p><p data-hero="260" style="margin:0 0 20px;font:400 clamp(1.1875rem,1.6vw,1.4375rem)/1.55 'Montserrat',sans-serif;color:#21221F;max-width:48ch">Something in your marketing isn't working. You might know exactly what it is. You might just know it's not landing.</p>
+        <div data-hero="260" style="margin:0 0 44px;font:400 clamp(1.1875rem,1.6vw,1.4375rem)/1.55 'Montserrat',sans-serif;color:#21221F;max-width:48ch"><p dir="ltr">I help aviation companies with marketing strategy, creative, execution, and training that builds momentum that lasts, without teaching an agency your industry before they can help you sell in it.</p>
+<p dir="ltr"></p></div>
+        <div data-hero="380" style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+          <a href="#close" style="background:#6B2F2B;color:#F3EFE6;border-radius:2px;padding:19px 36px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#21221F">Let's talk shop</a>
+          <a href="#model" style="background:transparent;border:1px solid #21221F;color:#21221F;border-radius:2px;padding:18px 35px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out,color 180ms ease-out" style-hover="background:#21221F;color:#F3EFE6">How it works</a>
+        </div>
+      </div><div data-hero-img="" style="align-self:stretch;display:flex;flex-direction:column;padding:clamp(48px,7vw,96px) 0 clamp(48px,7vw,96px) 0">
+        <div style="flex:1;min-height:min(70vh,560px);border-left:2px solid #C9C0B2">
+          <img src="assets/hero-emily-web.jpg" alt="Overhead view of Emily working on a laptop surrounded by aviation magazines" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%">
+        </div>
+      </div>
+      
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(24px,6vw,88px)">
+      <div style="height:1px;background:#6B2F2B"></div>
+    </div>
+  </section>
+
+  <section id="model" data-rail="02 &nbsp;The Process" data-screen-label="02 The Process" style="background:#354C41;padding:clamp(88px,11vw,160px) clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <h2 data-reveal="" style="margin:0 0 clamp(56px,7vw,96px);font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;max-width:20ch">You don't get deliverables. You get momentum.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:48px">
+        <div data-reveal="" data-reveal-delay="0" style="border-left:1px solid rgba(201,192,178,0.24);padding-left:48px">
+          <p style="margin:0 0 12px;font:400 5.5rem/1 'Playfair Display',serif;color:#C9C0B2">01</p>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#F3EFE6">The Discovery</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:42ch">Your team, your collateral, your goals, and the human side of the business. How you do what you do, and why you do it that way. That's the part most marketing skips, and it's where the real story lives. We'll find out where your major pain points are and create an actionable gameplan on how to move forward.</p>
+        </div>
+        <div data-reveal="" data-reveal-delay="120" style="border-left:1px solid rgba(201,192,178,0.24);padding-left:48px">
+          <p style="margin:0 0 12px;font:400 5.5rem/1 'Playfair Display',serif;color:#C9C0B2">02</p>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#F3EFE6">The Work</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:42ch">Trade show, website, social, brand, whichever one brought you here. You get a plan built for your business. Not a template. Not a folder of generic tactics pulled off a shelf. I get in the weeds with you, figure out what's actually going to work, and build it out step by step. You'll always know what's happening and why.</p>
+        </div>
+        <div data-reveal="" data-reveal-delay="240" style="border-left:1px solid rgba(201,192,178,0.24);border-right:1px solid rgba(201,192,178,0.24);padding-left:48px;padding-right:48px">
+          <p style="margin:0 0 12px;font:400 5.5rem/1 'Playfair Display',serif;color:#C9C0B2">03</p>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#F3EFE6">The Handoff</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:42ch">Documentation, frameworks, walkthrough videos, plus live recorded sessions. Your team learns the how and the why. Hand it to a new hire on day one and they know what to do. This is what pushes your team forward and keeps things moving. So you grow and expand instead of spinning your wheels. That's long term success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section id="mirror" data-rail="03 &nbsp;The Mirror" data-screen-label="03 The Mirror" style="background:#F3EFE6;padding:clamp(88px,11vw,160px) clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <p data-reveal="" style="margin:0 0 20px;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">Who this is for</p>
+      <h2 data-reveal="" style="margin:0 0 clamp(48px,6vw,80px);font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F;max-width:24ch">You're in the right place if...</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr));gap:32px">
+        <article data-reveal="" data-reveal-delay="0" style="background:#FFFFFF;border:1px solid rgba(201,192,178,0.55);border-top:3px solid #6B2F2B;border-radius:2px;padding:clamp(32px,3.2vw,44px);box-shadow:0 1px 2px rgba(33,34,31,0.04),0 8px 24px -12px rgba(33,34,31,0.16);transition:box-shadow 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)" style-hover="box-shadow:0 2px 4px rgba(33,34,31,0.05),0 18px 40px -14px rgba(33,34,31,0.26);transform:translateY(-4px)">
+          <sc-if value="{{ cardPhotos }}" hint-placeholder-val="{{ false }}">
+            <div style="height:180px;margin:-28px -28px 28px;overflow:hidden">
+              <image-slot id="mirror-1" shape="rect" placeholder="Shop bay, 3:2"></image-slot>
+            </div>
+          </sc-if>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">The company is better than its collateral.</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">You know your business cold. The shop does excellent work and the people are the reason customers come back. That part isn't the problem. The problem is your collateral hasn't kept up. You don't know where to show up to reach the customers you haven't met yet, or how to paint the picture in a way that actually matches what the business already is. The story is there. You just don't have time to modernize it.</p>
+        </article>
+        <article data-reveal="" data-reveal-delay="90" style="background:#FFFFFF;border:1px solid rgba(201,192,178,0.55);border-top:3px solid #6B2F2B;border-radius:2px;padding:clamp(32px,3.2vw,44px);box-shadow:0 1px 2px rgba(33,34,31,0.04),0 8px 24px -12px rgba(33,34,31,0.16);transition:box-shadow 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)" style-hover="box-shadow:0 2px 4px rgba(33,34,31,0.05),0 18px 40px -14px rgba(33,34,31,0.26);transform:translateY(-4px)">
+          <sc-if value="{{ cardPhotos }}" hint-placeholder-val="{{ false }}">
+            <div style="height:180px;margin:-28px -28px 28px;overflow:hidden">
+              <image-slot id="mirror-2" shape="rect" placeholder="Laptop on a folding table at a show, 3:2"></image-slot>
+            </div>
+          </sc-if>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">The team is running an operation with no time to learn another tool.</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">Your team doesn't need a lecture on social, AI, or whatever's new this month. They need the campaign built, the audience set, and a walkthrough recorded on their screen, on their platform, so the next one is theirs to run. Not general training. Training built for exactly what they're looking at. Momentum builds while the day to day keeps moving, so marketing stops living on the back burner.</p>
+        </article>
+        <article data-reveal="" data-reveal-delay="0" style="background:#FFFFFF;border:1px solid rgba(201,192,178,0.55);border-top:3px solid #6B2F2B;border-radius:2px;padding:clamp(32px,3.2vw,44px);box-shadow:0 1px 2px rgba(33,34,31,0.04),0 8px 24px -12px rgba(33,34,31,0.16);transition:box-shadow 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)" style-hover="box-shadow:0 2px 4px rgba(33,34,31,0.05),0 18px 40px -14px rgba(33,34,31,0.26);transform:translateY(-4px)">
+          <sc-if value="{{ cardPhotos }}" hint-placeholder-val="{{ false }}">
+            <div style="height:180px;margin:-28px -28px 28px;overflow:hidden">
+              <image-slot id="mirror-3" shape="rect" placeholder="Booth being built, 3:2"></image-slot>
+            </div>
+          </sc-if>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">The company just lost internal bandwidth and can't afford a learning curve.</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">You have a big project already in motion. Trade shows, digital, print, whatever it is, there's a deadline, and you need it done so the rest of the operation keeps moving. Bringing in an outside agency means months of teaching them the business before they're useful. What you need is someone who already speaks the language and can pick up the ball mid-run.</p>
+        </article>
+        <article data-reveal="" data-reveal-delay="90" style="background:#FFFFFF;border:1px solid rgba(201,192,178,0.55);border-top:3px solid #6B2F2B;border-radius:2px;padding:clamp(32px,3.2vw,44px);box-shadow:0 1px 2px rgba(33,34,31,0.04),0 8px 24px -12px rgba(33,34,31,0.16);transition:box-shadow 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)" style-hover="box-shadow:0 2px 4px rgba(33,34,31,0.05),0 18px 40px -14px rgba(33,34,31,0.26);transform:translateY(-4px)">
+          <sc-if value="{{ cardPhotos }}" hint-placeholder-val="{{ false }}">
+            <div style="height:180px;margin:-28px -28px 28px;overflow:hidden">
+              <image-slot id="mirror-4" shape="rect" placeholder="Printed brochure in someone's hands, 3:2"></image-slot>
+            </div>
+          </sc-if>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">You're the person who got handed the title and then found out what's in it.</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">You're the person who got handed the title and then found out what's in it.**  Print, digital, trade show, website, socials, all of it landed at once. It's not that you can't do this. It's that nobody told you where to start. Whether you need to hand off a few things to get your head above water, an audit of what's really happening, or systems in place so you stop feeling like you're drowning, there's training for that too.</p>
+        </article>
+      </div>
+
+      
+
+      
+    </div>
+  </section><section data-rail="04 &nbsp;Proof" data-screen-label="04 Proof" style="background:#C9C0B2;padding:clamp(72px,9vw,112px) clamp(24px,6vw,88px)">
+    <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(32px,4vw,48px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:20px;width:100%;max-width:560px">
+        <span aria-hidden="true" style="flex:1;height:1px;background:rgba(33,34,31,0.3)"></span>
+        <p style="margin:0;flex:none;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.22em;text-transform:uppercase;color:#6B2F2B">Marketing from the inside</p>
+        <span aria-hidden="true" style="flex:1;height:1px;background:rgba(33,34,31,0.3)"></span>
+      </div>
+      <div style="width:100%;display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;background:rgba(243,239,230,0.38);border:1px solid rgba(33,34,31,0.14);border-radius:2px">
+        <div data-reveal="" data-reveal-delay="0" style="flex:1 1 240px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 24px">
+          <div style="height:68px;display:flex;align-items:center;justify-content:center">
+            <a href="https://nbaa.org/" target="_blank" rel="noopener noreferrer" aria-label="NBAA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/nbaa-member-sm.png" alt="Member of NBAA" style="display:block;height:48px;width:auto;flex:none"></a>
+          </div>
+        </div>
+        <div aria-hidden="true" style="flex:none;width:1px;align-self:stretch;margin:28px 0;background:rgba(33,34,31,0.22)"></div>
+        <div data-reveal="" data-reveal-delay="90" style="flex:1 1 240px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 24px">
+          <div style="height:68px;display:flex;align-items:center;justify-content:center">
+            <span style="display:flex;align-items:center;gap:16px">
+              <span style="display:flex;align-items:baseline;font:400 4rem/1 'Playfair Display',serif;letter-spacing:-0.02em;color:#21221F">12<span style="font:italic 400 2rem/1 'Playfair Display',serif;margin-left:2px;color:#6B2F2B">+</span></span>
+              <span style="display:flex;flex-direction:column;gap:4px;border-left:1px solid rgba(33,34,31,0.35);padding-left:16px;font:600 0.75rem/1.35 'Montserrat',sans-serif;letter-spacing:0.16em;text-transform:uppercase;color:#21221F">
+                <span>Years in</span>
+                <span>Business Aviation</span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div aria-hidden="true" style="flex:none;width:1px;align-self:stretch;margin:28px 0;background:rgba(33,34,31,0.22)"></div>
+        <div data-reveal="" data-reveal-delay="180" style="flex:1 1 240px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 24px">
+          <div style="height:68px;display:flex;align-items:center;justify-content:center">
+            <a href="https://glada.aero/" target="_blank" rel="noopener noreferrer" aria-label="GLADA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/glada-member-sm.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:64px;width:auto;flex:none"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" data-rail="05 &nbsp;The Work" data-screen-label="05 The Work" style="background:#F3EFE6;padding:clamp(88px,11vw,160px) clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <p data-reveal="" style="margin:0 0 20px;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">What I do</p>
+      <h2 data-reveal="" style="margin:0 0 clamp(48px,6vw,80px);font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">The work</h2>
+
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;margin-bottom:32px">
+        <div data-reveal="" data-reveal-delay="0" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+          <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
+            <img loading="lazy" decoding="async" src="assets/work-brand-3-web.jpg" alt="Emily smiling on a phone call, seated on a sofa with a laptop and coffee" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 64%">
+          </div>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Brand and Messaging</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Most aviation companies are not unclear about what they do. They are unclear about how to say it. We get to the real story, then build the language, the positioning, and the proof points your whole team can use the same way in every room.</p>
+        </div>
+        <div data-reveal="" data-reveal-delay="90" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+          <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
+            <img loading="lazy" decoding="async" src="assets/work-website-2-web.jpg" alt="Emily typing on a laptop with a coffee mug in hand" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center 60%">
+          </div>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Social Strategy and Growth</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Posting more is not a strategy. You get a plan tied to how buyers in this industry actually decide, a content approach your team can sustain, and the campaign built once with you so the next one does not wait on an agency.</p>
+        </div>
+        <div data-reveal="" data-reveal-delay="180" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+          <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
+            <img loading="lazy" decoding="async" src="assets/work-tradeshow-web.jpg" alt="NBAA-BACE banner on the Las Vegas Convention Center West Hall" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%">
+          </div>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Trade Show Strategy</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">The show is the biggest line item and the least planned. We set the goal, the message on the floor, what the booth has to do, who your team talks to, and the follow up that starts before you fly home. Then we measure what it returned.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px">
+        <div data-reveal="" data-reveal-delay="0" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+          <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
+            <img loading="lazy" decoding="async" src="assets/work-website-3-web.jpg" alt="Emily typing on a laptop on her lap" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 54%">
+          </div>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Website Strategy</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">Your website should be your hardest working team member. I map what's working, what's working against you, and how it should be structured for the person actually trying to find what they need. You get clear recommendations and a plan to fix it. I'm not your developer, but I'll work alongside yours to get it done right.</p>
+        </div>
+        <div data-reveal="" data-reveal-delay="90" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+          <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
+            <img loading="lazy" decoding="async" src="assets/work-ads-2-web.jpg" alt="Overhead view of Emily reading an aviation magazine spread beside AIN and AvBuyer" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 54%">
+          </div>
+          <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Print and Digital Ad Strategy</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">Trade press and digital placement still work. But only when the placement and the message actually match. I help you figure out where to show up, what the creative says at a glance, and how your spend tracks the show calendar instead of running on autopilot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="training" data-rail="06 &nbsp;Team Training" data-screen-label="06 Team Training" style="position:relative;background:#354C41;padding:clamp(112px,13vw,200px) clamp(24px,6vw,88px);overflow:hidden">
+    <div style="position:relative;z-index:2;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:clamp(40px,6vw,80px);align-items:center">
+      <div style="max-width:640px">
+        <p style="margin:0 0 20px;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#C9C0B2">The part most consultants skip</p>
+        <h2 style="margin:0 0 32px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6">In the Hangar, Hands On</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;margin-bottom:44px">
+          <p style="margin:0;font:400 clamp(1.1875rem,1.6vw,1.4375rem)/1.55 'Montserrat',sans-serif;color:#F3EFE6;max-width:48ch">Every project gets the frameworks, the recordings, the documentation. That gets you moving. But a stack of assets isn't a department. Someone still has to turn it into one.</p>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:62ch">That's what this is. Systems that work the way your team actually works. People trained on them, not just handed a login. Tools that talk to each other instead of living on five different platforms. And the reasoning behind every decision, so when something changes, your team knows how to adjust instead of calling me.</p>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.88);max-width:62ch">That's the difference between a team that has good marketing and
+a team that runs good marketing. One depends on whoever built
+it. The other keeps working when someone changes roles or you
+bring on someone new. I can only go this deep with a few teams
+at a time. Depth is the point, not volume.<br><br>If you want a marketing department that grows with the company
+instead of needing rescued every time it does, inquire below.</p>
+        </div>
+        <a href="training.html" style="background:#F3EFE6;color:#354C41;border-radius:2px;padding:19px 36px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background 180ms ease-out" style-hover="background:#C9C0B2">Inquire About Training</a>
+      </div>
+      <div style="height:min(58vh,540px)">
+        <img loading="lazy" decoding="async" src="assets/training-photo-sm.jpg" alt="Team working through a plan together with a laptop, notebook and printed chart" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" data-rail="07 &nbsp;My Story" data-screen-label="07 My Story" style="background:#F3EFE6;padding:clamp(88px,11vw,160px) clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:clamp(40px,6vw,88px);align-items:start">
+      <div style="position:sticky;top:120px">
+        <div data-reveal-portrait="" style="aspect-ratio:4/5;width:100%">
+          <img loading="lazy" decoding="async" src="assets/portrait-emily-5-sm.jpg" alt="Emily seated on a white studio floor with aviation magazines and a laptop" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 90%">
+        </div>
+      </div>
+      <div style="max-width:720px">
+        <p data-reveal="" style="margin:0 0 20px;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#6B2F2B">My Story</p>
+        <h2 data-reveal="" style="margin:0 0 28px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Hi, I'm Emily Hamilton. I've Been in Your Shoes.</h2>
+        <div data-reveal="" style="margin:0 0 40px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch"><p dir="ltr">I know what it's like to be a small team. I've been a one man team, and I've had a teammate. Building marketing from the inside out with budget restraints, low bandwidth, and a to do list that never ends isn't a small task, it's the whole job. I spent 12+ years building marketing from the ground up in business aviation. No roadmap. No shortcuts.&nbsp;</p>
+<p dir="ltr"></p></div><div data-reveal="" style="margin:0 0 40px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch"><p dir="ltr">That's why Define Co. exists. Not another agency you have to train. A way to build the systems and frameworks that keep your momentum going, no matter how small your team is right now.</p>
+<p dir="ltr"></p></div>
+        <a data-reveal="" data-reveal-delay="90" href="about.html" style="background:transparent;border:1px solid #21221F;color:#21221F;border-radius:2px;padding:18px 35px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background 180ms ease-out,color 180ms ease-out" style-hover="background:#21221F;color:#F3EFE6">Get the Full Story</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-rail="08 &nbsp;Point of View" data-screen-label="08 Point of View" style="background:#21221F;padding:clamp(88px,11vw,160px) clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:clamp(40px,6vw,80px);align-items:center">
+      <div>
+        <p data-reveal="" style="margin: 0 0 20px; font: 500 0.75rem/1.5 'Montserrat',sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #f2eeda">WHERE I STAND</p><h2 style="margin:0 0 32px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6">More content isn't <em style="font-style:italic">always</em> the answer.</h2>
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);max-width:62ch">Everybody knows this is a relationship industry. Everybody says it. Then we all go push content like we're going out of style.</p>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);max-width:62ch">Here's what nobody wants to say. Volume without substance doesn't build reach, it costs you trust. And in an industry where the players are spending real money on real decisions, trust is the only thing you're actually selling.</p>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);max-width:62ch">Plenty of companies are doing this well. Real voice, real transparency, real story. There's a fine line, though, and it takes judgment to walk it. That's the work.</p>
+        </div>
+      </div>
+      <div style="height:min(52vh,480px)">
+        <img loading="lazy" decoding="async" src="assets/pov-content-2-web.jpg" alt="Emily reading a magazine by a tall sunlit window, laptop on the sill" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%">
+      </div>
+      </div>
+
+      <figure data-reveal-quote="" style="margin:clamp(96px,11vw,128px) 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(28px,4vw,48px);align-items:start">
+        <div aria-hidden="true" style="width:2px;align-self:stretch;background:#C9C0B2"></div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <blockquote style="margin:0;display:flex;flex-direction:column;gap:6px">
+            <span style="font:400 clamp(2.5rem,5.4vw,5rem)/1.02 'Playfair Display',serif;letter-spacing:-0.025em;color:#F3EFE6">The best marketing in this industry</span>
+            <span style="font:italic 400 clamp(2.5rem,5.4vw,5rem)/1.06 'Playfair Display',serif;letter-spacing:-0.02em;color:#C9C0B2">still sounds like a person.</span>
+          </blockquote>
+          <p style="margin:32px 0 0;font:400 1.125rem/1.6 'Montserrat',sans-serif;color:rgba(243,239,230,0.78);max-width:46ch">Accelerate who you are, <em style="font-style:italic">not</em> replace who you are.</p>
+        </div>
+      </figure>
+
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:clamp(40px,6vw,80px);align-items:center">
+      <div style="aspect-ratio:3/2;border-radius:2px;overflow:hidden">
+        <img loading="lazy" decoding="async" src="assets/pov-ai-2-sm.jpg" alt="AI tools arranged in a circle: ChatGPT, Claude, Notion, Copilot, Perplexity and Gemini" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
+      </div>
+      <div>
+        <p data-reveal="" style="margin: 0 0 20px; font: 500 0.75rem/1.5 'Montserrat',sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #f2eeda">WHERE I STAND ON AI</p><h2 style="margin:0 0 32px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6">On AI</h2>
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);max-width:62ch">I'm genuinely excited about it, especially for small teams. It can do things for a team of two that used to take a department.</p>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);max-width:62ch">But there's a line. Use it to accelerate who you are, not to replace who you are. It's easy to lose yourself in it, and when a company does that, this industry loses the best part of itself.</p>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.82);max-width:62ch">Used well, it frees you up to show up more human, not less. That's the conversation I want to have with people.</p>
+        </div>
+        <div style="margin-top:44px;border-left:2px solid #6B2F2B;padding-left:24px">
+          <p style="margin:0;font:400 0.875rem/1.6 'Montserrat',sans-serif;color:rgba(243,239,230,0.7);max-width:62ch">This works best with companies who already believe marketing is an investment, not an expense to survive. Positioning matters more now than it ever has. There's more content than anyone can keep up with and it's coming faster every month. If you're not showing up clearly now, it gets harder from here, not easier.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="faq" data-rail="09 &nbsp;FAQ" data-screen-label="09 FAQ" style="background:#F3EFE6;padding:clamp(88px,11vw,160px) clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(40px,6vw,88px);align-items:start">
+      <div data-reveal="">
+        <h2 style="margin:0 0 24px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Questions I get</h2>
+        <p style="margin:0 0 36px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:36ch">These come up on almost every first call. If yours isn't here, ask it.</p>
+        <a href="#close" style="background:transparent;border:1px solid #21221F;color:#21221F;border-radius:2px;padding:18px 35px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background 180ms ease-out,color 180ms ease-out" style-hover="background:#21221F;color:#F3EFE6">Ask me something else</a>
+      </div>
+      <div data-reveal="" data-reveal-delay="90" style="max-width:720px">
+        <div style="border-top:1px solid #C9C0B2">
+          <button onClick="{{ toggle0 }}" aria-expanded="{{ open0 }}" style="width:100%;background:none;border:none;padding:28px 0;display:flex;gap:24px;align-items:flex-start;justify-content:space-between;text-align:left;cursor:pointer">
+            <span style="font:600 1.0625rem/1.5 'Montserrat',sans-serif;color:#21221F">What does working with you actually look like?</span>
+            <span aria-hidden="true" style="{{ icon0 }}">+</span>
+          </button>
+          <div style="{{ panel0 }}">
+            <p style="margin:0;padding:0 0 28px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.85);max-width:62ch">Both project based and retainer, depending on what your team needs. Either way, the focus is the same: getting the strategy and the training into your team's hands. I carry the work while you learn it and build the runway so you're ready to take off and lead it yourselves. And after that, I'm still here as a partner whenever you want a second set of eyes.</p>
+          </div>
+        </div>
+        <div style="border-top:1px solid #C9C0B2">
+          <button onClick="{{ toggle1 }}" aria-expanded="{{ open1 }}" style="width:100%;background:none;border:none;padding:28px 0;display:flex;gap:24px;align-items:flex-start;justify-content:space-between;text-align:left;cursor:pointer">
+            <span style="font:600 1.0625rem/1.5 'Montserrat',sans-serif;color:#21221F">Do you do SEO?</span>
+            <span aria-hidden="true" style="{{ icon1 }}">+</span>
+          </button>
+          <div style="{{ panel1 }}">
+            <p style="margin:0;padding:0 0 28px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.85);max-width:62ch">I do the strategy side. Keyword and buyer research for this industry, site structure, what each page has to earn, and the copy that goes on it. For technical work, schema, site speed, and migrations, I bring in a specialist I trust and manage them alongside your developer. I would rather tell you that than pretend it is all in house.</p>
+          </div>
+        </div>
+        <div style="border-top:1px solid #C9C0B2">
+          <button onClick="{{ toggle3 }}" aria-expanded="{{ open3 }}" style="width:100%;background:none;border:none;padding:28px 0;display:flex;gap:24px;align-items:flex-start;justify-content:space-between;text-align:left;cursor:pointer">
+            <span style="font:600 1.0625rem/1.5 'Montserrat',sans-serif;color:#21221F">Can you just run our marketing for us?</span>
+            <span aria-hidden="true" style="{{ icon3 }}">+</span>
+          </button>
+          <div style="{{ panel3 }}">
+            <p style="margin:0;padding:0 0 28px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.85);max-width:62ch">I will build and execute with you, and for stretches I will carry it. What I will not do is become the only person who knows how it works. Your team knows your customers better than any vendor. The goal is always to hand it back stronger than I found it.</p>
+          </div>
+        </div>
+        <div style="border-top:1px solid #C9C0B2">
+          <button onClick="{{ toggle4 }}" aria-expanded="{{ open4 }}" style="width:100%;background:none;border:none;padding:28px 0;display:flex;gap:24px;align-items:flex-start;justify-content:space-between;text-align:left;cursor:pointer">
+            <span style="font:600 1.0625rem/1.5 'Montserrat',sans-serif;color:#21221F">We already have an agency. Where do you fit?</span>
+            <span aria-hidden="true" style="{{ icon4 }}">+</span>
+          </button>
+          <div style="{{ panel4 }}">
+            <p style="margin:0;padding:0 0 28px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.85);max-width:62ch">Usually on your side of the table. I set the strategy and the standard, then brief and review the agency against it so you are not the one translating aviation for them. Good agencies like working this way, because the direction finally comes in clear.</p>
+          </div>
+        </div>
+        <div style="border-top:1px solid #C9C0B2;border-bottom:1px solid #C9C0B2">
+          <button onClick="{{ toggle5 }}" aria-expanded="{{ open5 }}" style="width:100%;background:none;border:none;padding:28px 0;display:flex;gap:24px;align-items:flex-start;justify-content:space-between;text-align:left;cursor:pointer">
+            <span style="font:600 1.0625rem/1.5 'Montserrat',sans-serif;color:#21221F">What if my team still can't run it after training?</span>
+            <span aria-hidden="true" style="{{ icon5 }}">+</span>
+          </button>
+          <div style="{{ panel5 }}">
+            <p style="margin:0;padding:0 0 28px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.85);max-width:62ch">Then the training was not finished. Sessions are recorded on your platforms with your work on the screen, and the documentation is written for the person who joins next year. If something is not sticking, we go back to it. I am not gone when the file is delivered.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="close" data-rail="10 &nbsp;Close" data-screen-label="10 Close" style="background:#6B2F2B;padding:180px clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto;text-align:center">
+      <h2 data-reveal="" style="margin:0 auto 24px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;max-width:22ch">Tell me what's going on.</h2>
+      <p data-reveal="" style="margin:0 auto 56px;font:400 clamp(1.1875rem,1.6vw,1.4375rem)/1.55 'Montserrat',sans-serif;color:#F3EFE6;max-width:46ch">No pitch deck, no discovery fee. You tell me what isn't landing and I tell you straight whether I'm the right person for it.</p>
+      <form data-reveal="" data-reveal-delay="90" onSubmit="{{ onSubmit }}" style="max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:16px;text-align:left">
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Name</span>
+          <input type="text" name="name" required="required" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Company</span>
+          <input type="text" name="company" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Email</span>
+          <input type="email" name="email" required="required" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.4 'Montserrat',sans-serif;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">What's going on?</span>
+          <textarea name="message" rows="5" style="background:transparent;border:1px solid rgba(243,239,230,0.4);border-radius:0;padding:18px;color:#F3EFE6;font:400 1.0625rem/1.6 'Montserrat',sans-serif;resize:vertical;transition:border-color 160ms ease-out" style-focus="border-color:#F3EFE6;outline:none"></textarea>
+        </label>
+        <button type="submit" style="margin-top:12px;align-self:flex-start;background:#F3EFE6;color:#6B2F2B;border:none;border-radius:2px;padding:19px 36px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 180ms ease-out" style-hover="background:#C9C0B2">Send it</button>
+        <sc-if value="{{ formMsg }}" hint-placeholder-val="{{ false }}">
+          <p role="status" style="margin:4px 0 0;font:500 0.9375rem/1.5 'Montserrat',sans-serif;color:#F3EFE6">{{ formMsg }}</p>
+        </sc-if>
+        <p style="margin:16px 0 0;font:500 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.7)">Or just call. <a href="tel:8642701790" style="color:#F3EFE6;text-decoration-color:#F3EFE6">864-270-1790</a></p>
+      </form>
+    </div>
+  </section>
+
+  <footer style="background:#21221F;padding:64px clamp(24px,6vw,88px)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <img src="assets/logo-cream-sm.png" alt="Define Co." style="display: block; align-self: flex-start; height: 57px; width: 267px; margin-bottom: 8px">
+        <span style="font:600 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6">Emily Hamilton<span style="font-weight:400;color:rgba(243,239,230,0.6)"> &middot; Founder, Define Co.</span></span>
+        <a href="tel:8642701790" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">864-270-1790</a><a href="mailto:emily@defineco.studio" style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:#F3EFE6;text-decoration-color:rgba(243,239,230,0.4)">emily@defineco.studio</a>
+        
+      </div>
+      <div aria-label="Services" style="display:flex;flex-direction:column;gap:10px">
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Brand and Messaging</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Social Strategy and Growth</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Trade Show Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Website Strategy</span>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.82)">Print and Digital Ad Strategy</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+          <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
+            <a href="https://nbaa.org/" target="_blank" rel="noopener noreferrer" aria-label="NBAA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/nbaa-member-sm.png" alt="Member of NBAA" style="display:block;height:34px;width:auto"></a>
+          </span>
+          <span style="display:inline-flex;background:#F3EFE6;border-radius:2px;padding:10px 14px">
+            <a href="https://glada.aero/" target="_blank" rel="noopener noreferrer" aria-label="GLADA (opens in a new tab)" style="display:inline-flex;text-decoration:none;transition:opacity 180ms ease-out" style-hover="opacity:0.75"><img loading="lazy" decoding="async" src="assets/glada-member-sm.png" alt="Member of the Global Licensed Aircraft Dealers Association" style="display:block;height:36px;width:auto"></a>
+          </span>
+        </div>
+        <span style="font:400 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.6)">© 2026 Define Co. Greenville, South Carolina.</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showRail&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page behavior&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page behavior&quot;},&quot;mirrorPhotos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page behavior&quot;}}">
+class Component extends DCLogic {
+  state = { wide: 1440, sending: false, formMsg: '', open: 0, navOpen: false };
+
+  componentDidMount() {
+    const __hashScroll = () => { const id = (location.hash || '').slice(1); if (!id) return; const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'auto' }); };
+    setTimeout(__hashScroll, 60); setTimeout(__hashScroll, 400);
+    this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._onResize = () => this.setState({ wide: window.innerWidth });
+    window.addEventListener('resize', this._onResize);
+    this._onResize();
+
+    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
+    if (!this._reduced) {
+      document.querySelectorAll('[data-hero]').forEach(el => {
+        const d = parseInt(el.getAttribute('data-hero'), 10) || 0;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = 'opacity 720ms ' + ease + ', transform 720ms ' + ease;
+        setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, d + 60);
+      });
+      const img = document.querySelector('[data-hero-img]');
+      if (img) {
+        img.style.opacity = '0';
+        img.style.transform = 'scale(1.04)';
+        img.style.transition = 'opacity 1200ms ' + ease + ', transform 1200ms ' + ease;
+        setTimeout(() => { img.style.opacity = '1'; img.style.transform = 'scale(1)'; }, 100);
+      }
+
+      const prep = (el, rise, dur, delay) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(' + rise + 'px)';
+        el.style.transition = 'opacity ' + dur + 'ms ' + ease + ', transform ' + dur + 'ms ' + ease;
+        el.style.transitionDelay = delay + 'ms';
+      };
+      const items = [];
+      if (this.props.reveal !== false) {
+        document.querySelectorAll('[data-reveal]').forEach(el => {
+          prep(el, 28, 720, parseInt(el.getAttribute('data-reveal-delay'), 10) || 0);
+          items.push(el);
+        });
+        document.querySelectorAll('[data-reveal-quote]').forEach(el => { prep(el, 20, 1000, 200); items.push(el); });
+        document.querySelectorAll('[data-reveal-portrait]').forEach(el => { prep(el, 0, 900, 0); items.push(el); });
+      }
+      this._io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            this._io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.01, rootMargin: '0px 0px -12% 0px' });
+      items.forEach(el => this._io.observe(el));
+    }
+
+    this._sections = Array.from(document.querySelectorAll('[data-rail]'));
+    this._onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      const header = document.querySelector('[data-header]');
+      if (header) {
+        const on = y > 120;
+        header.style.height = on ? '84px' : '96px';
+        header.style.background = on ? 'rgba(243,239,230,0.94)' : 'transparent';
+        header.style.backdropFilter = on ? 'blur(8px)' : 'none';
+        header.style.borderBottom = on ? '1px solid #C9C0B2' : '1px solid transparent';
+      }
+      const doc = document.documentElement.scrollHeight - window.innerHeight;
+      const p = doc > 0 ? Math.min(1, Math.max(0, y / doc)) : 0;
+      const tick = document.querySelector('[data-rail-tick]');
+      if (tick) {
+        const travel = Math.max(0, window.innerHeight - 280 - 56);
+        tick.style.transform = 'translateY(' + (p * travel) + 'px)';
+      }
+      const label = document.querySelector('[data-rail-label]');
+      if (label) {
+        const secs = Array.from(document.querySelectorAll('[data-rail]'));
+        let cur = secs[0];
+        secs.forEach(s => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.4) cur = s; });
+        const txt = cur ? cur.getAttribute('data-rail').replace(/&nbsp;/g, ' ') : '';
+        if (label.textContent !== txt) label.textContent = txt;
+      }
+      if (!this._reduced) {
+        const px = document.querySelector('[data-parallax]');
+        if (px) {
+          const r = px.parentElement.getBoundingClientRect();
+          if (r.bottom > 0 && r.top < window.innerHeight) {
+            const rel = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+            px.style.transform = 'translateY(' + ((rel - 0.5) * 0.06 * r.height) + 'px)';
+          }
+        }
+      }
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+
+  toggle(i) {
+    this.setState(s => ({ open: s.open === i ? -1 : i }));
+  }
+
+  renderVals() {
+    const w = this.state.wide;
+    const vals = {
+      railOn: (this.props.showRail !== false) && w >= 1200,
+      navWide: w >= 1080,
+      navNarrow: w < 1080,
+      navOpen: this.state.navOpen,
+      cardPhotos: this.props.mirrorPhotos === true,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      formMsg: this.state.formMsg,
+      onSubmit: e => {
+        e.preventDefault();
+        if (this.state.sending) return;
+        const form = e.target;
+        this.setState({ sending: true, formMsg: 'Sending...' });
+        window.DefineForms.submit(form, 'contact').then(
+          () => { form.reset(); this.setState({ sending: false, formMsg: "Got it. I'll be in touch soon." }); },
+          () => this.setState({ sending: false, formMsg: "That didn't go through. Email me at emily@defineco.studio or call 864-270-1790." })
+        );
+      }
+    };
+    for (let i = 0; i < 6; i++) {
+      const isOpen = this.state.open === i;
+      vals['toggle' + i] = () => this.toggle(i);
+      vals['open' + i] = isOpen ? 'true' : 'false';
+      vals['icon' + i] = 'flex:none;color:#6B2F2B;font:400 1rem/1 Montserrat,sans-serif;width:16px;height:16px;display:flex;align-items:center;justify-content:center;transition:transform 200ms ease-out;transform:rotate(' + (isOpen ? '45deg' : '0deg') + ')';
+      vals['panel' + i] = 'overflow:hidden;transition:max-height 320ms cubic-bezier(0.16,1,0.3,1),opacity 180ms ease-out 140ms;max-height:' + (isOpen ? '480px' : '0px') + ';opacity:' + (isOpen ? '1' : '0');
+    }
+    return vals;
+  }
+}
+
+</script>
+</body>
+</html>
