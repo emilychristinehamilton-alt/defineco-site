@@ -92,6 +92,15 @@
 <script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"vendor/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"vendor/react-dom.production.min.js"};</script>
 <script src="./support.js"></script>
 <script src="./wix-forms.js"></script>
+<style>
+.navdd{position:relative}
+.navdd-panel{position:absolute;top:100%;left:-24px;padding-top:18px;visibility:hidden;opacity:0;transform:translateY(-4px);transition:opacity 160ms ease-out,transform 160ms ease-out,visibility 0s linear 160ms;z-index:70}
+.navdd:hover .navdd-panel,.navdd:focus-within .navdd-panel{visibility:visible;opacity:1;transform:none;transition-delay:0s}
+.navdd-list{background:#F3EFE6;border:1px solid #C9C0B2;border-radius:2px;box-shadow:0 14px 36px rgba(33,34,31,0.14);padding:10px 0;min-width:250px}
+.navdd-list a{display:block;padding:12px 24px;font:500 0.8125rem/1.3 'Montserrat',sans-serif;letter-spacing:0.04em;color:#21221F;text-decoration:none;white-space:nowrap}
+.navdd-list a:hover,.navdd-list a:focus-visible{background:#EDE7DA;color:#6B2F2B}
+.navdd-list a[aria-current]{color:#6B2F2B}
+</style>
 </head>
 <body>
 <x-dc>
@@ -137,7 +146,7 @@
     <sc-if value="{{ navWide }}" hint-placeholder-val="{{ true }}">
       <nav style="display:flex;align-items:center;gap:36px">
         <a href="#top" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Home</a>
-        <a href="#work" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Services</a>
+        <div class="navdd"><a href="#work" aria-haspopup="true" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none;display:inline-flex;align-items:center;gap:7px">Services<span aria-hidden="true" style="font-size:0.625rem;line-height:1">&#9662;</span></a><div class="navdd-panel"><div class="navdd-list"><a href="brand-messaging.html">Brand and Messaging</a><a href="social-strategy.html">Social Strategy and Growth</a><a href="trade-show-strategy.html">Trade Show Strategy</a><a href="website-strategy.html">Website Strategy</a><a href="ad-strategy.html">Print and Digital Ad Strategy</a><a href="training.html">Team Training</a></div></div></div>
         <a href="training.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Training</a>
         <a href="about.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">About</a>
         <a href="resources.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#21221F;text-decoration:none">Resources</a>
@@ -155,7 +164,7 @@
   </header>
 
   <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,6vw,64px)">
+    <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;overflow-y:auto;gap:32px;padding:clamp(24px,6vw,64px)">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <img width="800" height="184" src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:24px;width:auto">
         <button onClick="{{ toggleNav }}" aria-label="Close menu" style="background:none;border:none;color:#F3EFE6;font:400 2rem/1 'Playfair Display',serif;cursor:pointer;padding:8px 12px">×</button>
@@ -163,6 +172,7 @@
       <nav style="display:flex;flex-direction:column;gap:20px">
         <a href="#top" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Home</a>
         <a href="#work" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Services</a>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 22px;margin:-6px 0 4px;max-width:420px"><a href="brand-messaging.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Brand and Messaging</a><a href="social-strategy.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Social Strategy</a><a href="trade-show-strategy.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Trade Shows</a><a href="website-strategy.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Website Strategy</a><a href="ad-strategy.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Ad Strategy</a><a href="training.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Team Training</a></div>
         <a href="training.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Training</a>
         <a href="about.html" onClick="{{ toggleNav }}" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">About</a>
         <a href="resources.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Resources</a>
@@ -318,48 +328,48 @@
       <h2 data-reveal="" style="margin:0 0 clamp(48px,6vw,80px);font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">The work</h2>
 
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;margin-bottom:32px">
-        <div data-reveal="" data-reveal-delay="0" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+        <div data-reveal="" data-reveal-delay="0" style="display:flex;flex-direction:column;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
             <img width="720" height="1080" loading="lazy" decoding="async" src="assets/work-brand-3-web.jpg" alt="Emily smiling on a phone call, seated on a sofa with a laptop and coffee" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 64%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Brand and Messaging</h3>
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Most aviation companies are not unclear about what they do. They are unclear about how to say it. We get to the real story, then build the language, the positioning, and the proof points your whole team can use the same way in every room.</p>
-          <a href="brand-messaging.html" aria-label="Learn more about Brand and Messaging" style="display:inline-block;margin-top:18px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
+          <a href="brand-messaging.html" aria-label="Learn more about Brand and Messaging" style="display:inline-block;align-self:flex-start;margin-top:auto;padding-top:28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
         </div>
-        <div data-reveal="" data-reveal-delay="90" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+        <div data-reveal="" data-reveal-delay="90" style="display:flex;flex-direction:column;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
             <img width="720" height="480" loading="lazy" decoding="async" src="assets/work-website-2-web.jpg" alt="Emily typing on a laptop with a coffee mug in hand" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center 60%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Social Strategy and Growth</h3>
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">Posting more is not a strategy. You get a plan tied to how buyers in this industry actually decide, a content approach your team can sustain, and the campaign built once with you so the next one does not wait on an agency.</p>
-          <a href="social-strategy.html" aria-label="Learn more about Social Strategy and Growth" style="display:inline-block;margin-top:18px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
+          <a href="social-strategy.html" aria-label="Learn more about Social Strategy and Growth" style="display:inline-block;align-self:flex-start;margin-top:auto;padding-top:28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
         </div>
-        <div data-reveal="" data-reveal-delay="180" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+        <div data-reveal="" data-reveal-delay="180" style="display:flex;flex-direction:column;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
             <img width="720" height="960" loading="lazy" decoding="async" src="assets/work-tradeshow-web.jpg" alt="NBAA-BACE banner on the Las Vegas Convention Center West Hall" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Trade Show Strategy</h3>
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9)">The show is the biggest line item and the least planned. We set the goal, the message on the floor, what the booth has to do, who your team talks to, and the follow up that starts before you fly home. Then we measure what it returned.</p>
-          <a href="trade-show-strategy.html" aria-label="Learn more about Trade Show Strategy" style="display:inline-block;margin-top:18px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
+          <a href="trade-show-strategy.html" aria-label="Learn more about Trade Show Strategy" style="display:inline-block;align-self:flex-start;margin-top:auto;padding-top:28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
         </div>
       </div>
 
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px">
-        <div data-reveal="" data-reveal-delay="0" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+        <div data-reveal="" data-reveal-delay="0" style="display:flex;flex-direction:column;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
             <img width="720" height="1080" loading="lazy" decoding="async" src="assets/work-website-3-web.jpg" alt="Emily typing on a laptop on her lap" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 54%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Website Strategy</h3>
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">Your website should be your hardest working team member. I map what's working, what's working against you, and how it should be structured for the person actually trying to find what they need. You get clear recommendations and a plan to fix it. I'm not your developer, but I'll work alongside yours to get it done right.</p>
-          <a href="website-strategy.html" aria-label="Learn more about Website Strategy" style="display:inline-block;margin-top:18px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
+          <a href="website-strategy.html" aria-label="Learn more about Website Strategy" style="display:inline-block;align-self:flex-start;margin-top:auto;padding-top:28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
         </div>
-        <div data-reveal="" data-reveal-delay="90" style="display:block;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
+        <div data-reveal="" data-reveal-delay="90" style="display:flex;flex-direction:column;flex:0 1 calc((100% - 64px) / 3);min-width:min(320px,100%);background:#EDE7DA;border:1px solid #C9C0B2;border-radius:2px;padding:clamp(28px,3vw,40px);transition:border-color 260ms cubic-bezier(0.16,1,0.3,1),transform 260ms cubic-bezier(0.16,1,0.3,1)">
           <div style="height:260px;margin:-28px -28px 28px;overflow:hidden">
             <img width="720" height="1080" loading="lazy" decoding="async" src="assets/work-ads-2-web.jpg" alt="Overhead view of Emily reading an aviation magazine spread beside AIN and AvBuyer" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 54%">
           </div>
           <h3 style="margin:0 0 16px;font:600 1.1875rem/1.35 'Montserrat',sans-serif;color:#21221F">Print and Digital Ad Strategy</h3>
           <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:62ch">Trade press and digital placement still work. But only when the placement and the message actually match. I help you figure out where to show up, what the creative says at a glance, and how your spend tracks the show calendar instead of running on autopilot.</p>
-          <a href="ad-strategy.html" aria-label="Learn more about Print and Digital Ad Strategy" style="display:inline-block;margin-top:18px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
+          <a href="ad-strategy.html" aria-label="Learn more about Print and Digital Ad Strategy" style="display:inline-block;align-self:flex-start;margin-top:auto;padding-top:28px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:#6B2F2B;text-decoration:underline;text-decoration-color:#6B2F2B;text-underline-offset:6px">Learn more</a>
         </div>
       </div>
     </div>

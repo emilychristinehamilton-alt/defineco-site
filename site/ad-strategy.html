@@ -45,6 +45,15 @@
 <script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"vendor/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"vendor/react-dom.production.min.js"};</script>
 <script src="./support.js"></script>
 <script src="./wix-forms.js"></script>
+<style>
+.navdd{position:relative}
+.navdd-panel{position:absolute;top:100%;left:-24px;padding-top:18px;visibility:hidden;opacity:0;transform:translateY(-4px);transition:opacity 160ms ease-out,transform 160ms ease-out,visibility 0s linear 160ms;z-index:70}
+.navdd:hover .navdd-panel,.navdd:focus-within .navdd-panel{visibility:visible;opacity:1;transform:none;transition-delay:0s}
+.navdd-list{background:#F3EFE6;border:1px solid #C9C0B2;border-radius:2px;box-shadow:0 14px 36px rgba(33,34,31,0.14);padding:10px 0;min-width:250px}
+.navdd-list a{display:block;padding:12px 24px;font:500 0.8125rem/1.3 'Montserrat',sans-serif;letter-spacing:0.04em;color:#21221F;text-decoration:none;white-space:nowrap}
+.navdd-list a:hover,.navdd-list a:focus-visible{background:#EDE7DA;color:#6B2F2B}
+.navdd-list a[aria-current]{color:#6B2F2B}
+</style>
 </head>
 <body>
 <x-dc>
@@ -81,7 +90,7 @@
     <sc-if value="{{ navWide }}" hint-placeholder-val="{{ true }}">
       <nav data-nav="" style="display:flex;align-items:center;gap:36px">
         <a href="index.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Home</a>
-        <a href="index.html#work" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none;border-bottom:1px solid #C9C0B2;padding-bottom:3px">Services</a>
+        <div class="navdd"><a href="index.html#work" aria-haspopup="true" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none;border-bottom:1px solid #C9C0B2;padding-bottom:3px;display:inline-flex;align-items:center;gap:7px">Services<span aria-hidden="true" style="font-size:0.625rem;line-height:1">&#9662;</span></a><div class="navdd-panel"><div class="navdd-list"><a href="brand-messaging.html">Brand and Messaging</a><a href="social-strategy.html">Social Strategy and Growth</a><a href="trade-show-strategy.html">Trade Show Strategy</a><a href="website-strategy.html">Website Strategy</a><a href="ad-strategy.html" aria-current="page">Print and Digital Ad Strategy</a><a href="training.html">Team Training</a></div></div></div>
         <a href="training.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Training</a>
         <a href="about.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">About</a>
         <a href="resources.html" style="font:500 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.06em;color:#F3EFE6;text-decoration:none">Resources</a>
@@ -99,7 +108,7 @@
   </header>
 
   <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,6vw,64px)">
+    <div style="position:fixed;inset:0;z-index:60;background:#354C41;display:flex;flex-direction:column;justify-content:space-between;overflow-y:auto;gap:32px;padding:clamp(24px,6vw,64px)">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <img width="800" height="184" src="assets/logo-cream-sm.png" alt="Define Co." style="display:block;height:24px;width:auto">
         <button onClick="{{ toggleNav }}" aria-label="Close menu" style="background:none;border:none;color:#F3EFE6;font:400 2rem/1 'Playfair Display',serif;cursor:pointer;padding:8px 12px">×</button>
@@ -107,6 +116,7 @@
       <nav style="display:flex;flex-direction:column;gap:20px">
         <a href="index.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Home</a>
         <a href="index.html#work" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Services</a>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 22px;margin:-6px 0 4px;max-width:420px"><a href="brand-messaging.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Brand and Messaging</a><a href="social-strategy.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Social Strategy</a><a href="trade-show-strategy.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Trade Shows</a><a href="website-strategy.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Website Strategy</a><a href="ad-strategy.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Ad Strategy</a><a href="training.html" style="font:500 0.875rem/1.4 'Montserrat',sans-serif;letter-spacing:0.04em;color:rgba(243,239,230,0.8);text-decoration:none">Team Training</a></div>
         <a href="training.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Training</a>
         <a href="about.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">About</a>
         <a href="resources.html" style="font:400 clamp(2.25rem,9vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;text-decoration:none">Resources</a>
@@ -125,7 +135,7 @@
       <div>
       <p data-hero="0" style="margin:0 0 24px;font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#C9C0B2">Print and Digital Ad Strategy</p>
       <h1 data-hero="120" style="margin:0 0 32px;font:400 clamp(2.75rem,5.8vw,5.25rem)/1.03 'Playfair Display',serif;letter-spacing:-0.02em;color:#F3EFE6;max-width:15ch">Aviation Advertising Strategy, Print and Digital</h1>
-      <p data-hero="260" style="margin:0 0 20px;font:400 clamp(1.1875rem,1.7vw,1.5rem)/1.55 'Montserrat',sans-serif;color:rgba(243,239,230,0.9);max-width:44ch">Print or digital. Where do you start, where do your dollars go, and what do you even say once you're in?</p>
+      <p data-hero="260" style="margin:0 0 20px;font:400 clamp(1.0625rem,1.2vw,1.1875rem)/1.6 'Montserrat',sans-serif;color:rgba(243,239,230,0.9);max-width:44ch">Print or digital. Where do you start, where do your dollars go, and what do you even say once you're in?</p>
       <p data-hero="320" style="margin:0 0 clamp(40px,5vw,56px);font:italic 400 clamp(1.5rem,2.4vw,2rem)/1.3 'Playfair Display',serif;color:#C9C0B2;max-width:26ch">Let's figure it out before you sign the insertion order.</p>
       <a data-hero="400" href="#close" style="display:inline-block;background:#F3EFE6;color:#354C41;border-radius:2px;padding:19px 36px;font:600 0.8125rem/1 'Montserrat',sans-serif;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 180ms ease-out" style-hover="background:#C9C0B2">Let's talk shop</a>
       </div>
