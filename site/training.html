@@ -44,7 +44,7 @@
 </script>
 <script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"vendor/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"vendor/react-dom.production.min.js"};</script>
 <script src="./support.js"></script>
-<script src="./wix-forms.js"></script>
+<script src="./forms.js"></script>
 <style>
 .navdd{position:relative}
 .navdd-panel{position:absolute;top:100%;left:-24px;padding-top:18px;visibility:hidden;opacity:0;transform:translateY(-4px);transition:opacity 160ms ease-out,transform 160ms ease-out,visibility 0s linear 160ms;z-index:70}
@@ -260,7 +260,7 @@
       <p data-reveal="" style="margin:0 auto 56px;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.85);max-width:52ch">I can only go this deep with a few teams at a time, so tell me a bit about where you're at and what you need.<span style="display:block;margin-top:14px;white-space:nowrap">Rather talk first? Call <a href="tel:8642701790" style="color:#F3EFE6;text-decoration-color:#F3EFE6">864-270-1790</a>.</span></p>
       <div data-reveal="" data-reveal-delay="90" style="max-width:760px;margin:0 auto;text-align:left;background:#F3EFE6;border-radius:2px;padding:clamp(28px,3.4vw,48px)">
         <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex;flex-direction:column;gap:20px;padding:clamp(24px,4vw,56px) 0">
+          <div role="status" style="display:flex;flex-direction:column;gap:20px;padding:clamp(24px,4vw,56px) 0">
             <div style="width:40px;height:2px;background:#6B2F2B"></div>
             <h2 style="margin:0;font:400 clamp(1.75rem,3vw,2.5rem)/1.1 'Playfair Display',serif;letter-spacing:-0.015em;color:#21221F">Inquiry received.</h2>
             <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(33,34,31,0.9);max-width:44ch">I read every one of these myself and I'll follow up personally, usually within two business days. If it's urgent, call me at <a href="tel:8642701790">864-270-1790</a>.</p>
@@ -319,6 +319,9 @@
             <sc-if value="{{ formMsg }}" hint-placeholder-val="{{ false }}">
               <p role="status" style="margin:0;font:500 0.9375rem/1.5 'Montserrat',sans-serif;color:#6B2F2B">{{ formMsg }}</p>
             </sc-if>
+            <sc-if value="{{ formErr }}" hint-placeholder-val="{{ false }}">
+              <div role="alert" style="margin:4px 0 0;background:#6B2F2B;color:#F3EFE6;border-left:3px solid #F3EFE6;padding:16px 20px;font:500 0.9375rem/1.6 'Montserrat',sans-serif"><strong style="display:block;font-weight:600;margin-bottom:4px">That didn't go through.</strong>Please try again, or reach me directly at <a href="mailto:emily@defineco.studio" style="color:#F3EFE6;text-decoration:underline;text-underline-offset:3px">emily@defineco.studio</a> or <a href="tel:8642701790" style="color:#F3EFE6;text-decoration:underline;text-underline-offset:3px;white-space:nowrap">864-270-1790</a>.</div>
+            </sc-if>
             <p style="margin:0;font:400 0.875rem/1.6 'Montserrat',sans-serif;color:rgba(33,34,31,0.72);max-width:46ch">Inquiries go straight to me, not a queue. I'll follow up personally.</p>
           </form>
         </sc-if>
@@ -363,7 +366,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page behavior&quot;}}">
 class Component extends DCLogic {
-  state = { wide: 1440, navOpen: false, open: -1, sending: false, formMsg: '', timeline: '', sent: false };
+  state = { wide: 1440, navOpen: false, open: -1, sending: false, formMsg: '', formErr: false, timeline: '', sent: false };
 
   componentDidMount() {
     this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -415,7 +418,7 @@ class Component extends DCLogic {
       if (logo) logo.src = on ? 'assets/logo-ink-sm.png' : 'assets/logo-cream-sm.png';
       const ink = on ? '#21221F' : '#F3EFE6';
       const nav = document.querySelector('[data-nav]');
-      if (nav) Array.from(nav.children).forEach(a => {
+      if (nav) Array.from(nav.children).map(c => c.classList.contains('navdd') ? c.firstElementChild : c).forEach(a => {
         if (a.style.background === '' || a.style.background === 'transparent') a.style.color = ink;
         if (a.style.borderBottom) a.style.borderBottomColor = on ? '#6B2F2B' : '#C9C0B2';
       });
@@ -451,6 +454,7 @@ class Component extends DCLogic {
       navOpen: this.state.navOpen,
       toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
       formMsg: this.state.formMsg,
+      formErr: this.state.formErr,
       sent: this.state.sent,
       notSent: !this.state.sent,
       chipAsap: this.chip(this.state.timeline === 'asap'),
@@ -463,10 +467,10 @@ class Component extends DCLogic {
         e.preventDefault();
         if (this.state.sending) return;
         const labels = { asap: 'ASAP', next: 'Next quarter', exploring: 'Just exploring' };
-        this.setState({ sending: true, formMsg: 'Sending...' });
+        this.setState({ sending: true, formMsg: 'Sending...', formErr: false });
         window.DefineForms.submit(e.target, 'training', { timeline: labels[this.state.timeline] || '' }).then(
           () => { this.setState({ sending: false, formMsg: '', sent: true }); const c = document.getElementById('close'); if (c) c.scrollIntoView({ behavior: 'smooth' }); },
-          () => this.setState({ sending: false, formMsg: "That didn't go through. Email me at emily@defineco.studio or call 864-270-1790." })
+          () => this.setState({ sending: false, formMsg: '', formErr: true })
         );
       }
     };

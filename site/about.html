@@ -313,7 +313,7 @@ class Component extends DCLogic {
       if (logo) logo.src = on ? 'assets/logo-ink-sm.png' : 'assets/logo-cream-sm.png';
       const ink = on ? '#21221F' : '#F3EFE6';
       const nav = document.querySelector('[data-nav]');
-      if (nav) Array.from(nav.children).forEach(a => {
+      if (nav) Array.from(nav.children).map(c => c.classList.contains('navdd') ? c.firstElementChild : c).forEach(a => {
         if (a.style.background === '' || a.style.background === 'transparent') a.style.color = ink;
         if (a.style.borderBottom) a.style.borderBottomColor = on ? '#6B2F2B' : '#C9C0B2';
       });
