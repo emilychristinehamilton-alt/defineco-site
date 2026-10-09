@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"vendor/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"vendor/react-dom.production.min.js"};</script>
 <script src="./support.js"></script>
-<script src="./wix-forms.js"></script>
+<script src="./forms.js"></script>
 <style>
 .navdd{position:relative}
 .navdd-panel{position:absolute;top:100%;left:-24px;padding-top:18px;visibility:hidden;opacity:0;transform:translateY(-4px);transition:opacity 160ms ease-out,transform 160ms ease-out,visibility 0s linear 160ms;z-index:70}
@@ -266,6 +266,14 @@
     <div style="max-width:1200px;margin:0 auto;text-align:center">
       <h2 data-reveal="" style="margin:0 auto 24px;font:400 clamp(2.25rem,4vw,3.5rem)/1.08 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6;max-width:22ch">Tell me what's going on.</h2>
       <p data-reveal="" style="margin:0 auto 56px;font:400 clamp(1.1875rem,1.6vw,1.4375rem)/1.55 'Montserrat',sans-serif;color:#F3EFE6;max-width:46ch">No pitch deck, no discovery fee. You tell me what isn't landing and I tell you straight whether I'm the right person for it.</p>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="max-width:620px;margin:0 auto;text-align:left;border:1px solid rgba(243,239,230,0.4);padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:20px">
+          <div style="width:40px;height:2px;background:#F3EFE6"></div>
+          <h3 style="margin:0;font:400 clamp(1.75rem,3vw,2.5rem)/1.1 'Playfair Display',serif;letter-spacing:-0.015em;color:#F3EFE6">Message received.</h3>
+          <p style="margin:0;font:400 1.0625rem/1.72 'Montserrat',sans-serif;color:rgba(243,239,230,0.9);max-width:44ch">Thanks for reaching out. I read every one of these myself and I'll follow up personally, usually within two business days. If it's urgent, call me at <a href="tel:8642701790" style="color:#F3EFE6;text-decoration-color:#F3EFE6;white-space:nowrap">864-270-1790</a>.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
       <form data-reveal="" data-reveal-delay="90" onSubmit="{{ onSubmit }}" style="max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:16px;text-align:left">
         <label style="display:flex;flex-direction:column;gap:8px">
           <span style="font:500 0.75rem/1.5 'Montserrat',sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:rgba(243,239,230,0.8)">Name</span>
@@ -287,8 +295,12 @@
         <sc-if value="{{ formMsg }}" hint-placeholder-val="{{ false }}">
           <p role="status" style="margin:4px 0 0;font:500 0.9375rem/1.5 'Montserrat',sans-serif;color:#F3EFE6">{{ formMsg }}</p>
         </sc-if>
+        <sc-if value="{{ formErr }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="margin:4px 0 0;background:#F3EFE6;color:#6B2F2B;border-left:3px solid #6B2F2B;padding:16px 20px;font:500 0.9375rem/1.6 'Montserrat',sans-serif"><strong style="display:block;font-weight:600;margin-bottom:4px">That didn't go through.</strong>Please try again, or reach me directly at <a href="mailto:emily@defineco.studio" style="color:#6B2F2B;text-decoration:underline;text-underline-offset:3px">emily@defineco.studio</a> or <a href="tel:8642701790" style="color:#6B2F2B;text-decoration:underline;text-underline-offset:3px;white-space:nowrap">864-270-1790</a>.</div>
+        </sc-if>
         <p style="margin:16px 0 0;font:500 0.875rem/1.5 'Montserrat',sans-serif;color:rgba(243,239,230,0.7)">Or just call. <a href="tel:8642701790" style="color:#F3EFE6;text-decoration-color:#F3EFE6">864-270-1790</a></p>
       </form>
+      </sc-if>
     </div>
   </section>
 
@@ -329,7 +341,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page behavior&quot;}}">
 class Component extends DCLogic {
-  state = { wide: 1440, sending: false, formMsg: '', navOpen: false };
+  state = { wide: 1440, sending: false, formMsg: '', formErr: false, sent: false, navOpen: false };
 
   componentDidMount() {
     this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -383,7 +395,7 @@ class Component extends DCLogic {
       if (logo) logo.src = on ? 'assets/logo-ink-sm.png' : 'assets/logo-cream-sm.png';
       const ink = on ? '#21221F' : '#F3EFE6';
       const nav = document.querySelector('[data-nav]');
-      if (nav) Array.from(nav.children).forEach(a => {
+      if (nav) Array.from(nav.children).map(c => c.classList.contains('navdd') ? c.firstElementChild : c).forEach(a => {
         if (a.style.background === '' || a.style.background === 'transparent') a.style.color = ink;
         if (a.style.borderBottom) a.style.borderBottomColor = on ? '#6B2F2B' : '#C9C0B2';
       });
@@ -404,14 +416,17 @@ class Component extends DCLogic {
     const w = this.state.wide;
     return {
       formMsg: this.state.formMsg,
+      formErr: this.state.formErr,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
       onSubmit: e => {
         e.preventDefault();
         if (this.state.sending) return;
         const form = e.target;
-        this.setState({ sending: true, formMsg: 'Sending...' });
+        this.setState({ sending: true, formMsg: 'Sending...', formErr: false });
         window.DefineForms.submit(form, 'contact').then(
-          () => { form.reset(); this.setState({ sending: false, formMsg: "Got it. I'll be in touch soon." }); },
-          () => this.setState({ sending: false, formMsg: "That didn't go through. Email me at emily@defineco.studio or call 864-270-1790." })
+          () => { form.reset(); this.setState({ sending: false, formMsg: '', sent: true }); },
+          () => this.setState({ sending: false, formMsg: '', formErr: true })
         );
       },
       storyWide: w >= 720,
